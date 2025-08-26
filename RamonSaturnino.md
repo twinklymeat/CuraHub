@@ -1,7 +1,7 @@
 # Ramon Saturnino
 
 ## About Me
-Use this paragraph to write a brief introduction of yourself. This will be a public file, so be mindful of that. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+My name is Ramon Saturnino, I'm a Computer Science student, previously during the summer I worked at Oracle as a SWE Intern, currently I'm looking into research opportunities in Multimodal ML, outside of work and school I enjoy spending time with friends and family, I also like to play soccer:) 
 
 ## My CSC340 Goals
-Use this paragraph to describe what you hope to get out of this class. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+Learn more about best software engineering practices, and concepts I may not know. Collaborate and deliver a nice and fun project. 
