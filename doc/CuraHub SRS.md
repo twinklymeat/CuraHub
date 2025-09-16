@@ -1,5 +1,5 @@
 # Software Requirements Specification
-## For <project name>
+## For CuraHub
 
 Version 0.1  
 Prepared by <author>  
