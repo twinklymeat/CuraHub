@@ -44,19 +44,27 @@ Table of Contents
 ## 1. Introduction
 
 ### 1.1 Document Purpose
-Describe the purpose of the SRS and its intended audience.
+The purpoe of the SRS document is to describe the different requirements for the user and developer view for the CuraHub application.
+
+User-oriented requirements describe the program from the users point of view, basically telling them what the application will be doing. However, Developer-oriented requirements describe the application in a software developmer's point of view, such as describing functional and performance requirements. 
 
 ### 1.2 Product Scope
-Identify the product whose software requirements are specified in this document, including the revision or release number. Explain what the product that is covered by this SRS will do, particularly if this SRS describes only part of the system or a single subsystem. 
-Provide a short description of the software being specified and its purpose, including relevant benefits, objectives, and goals. Relate the software to corporate goals or business strategies. If a separate vision and scope document is available, refer to it rather than duplicating its contents here.
+CuraHub is a web-based application that connects doctors and patients through an appointment scheduling system. Doctors can register on the platform to create profiles and offer available appointment slots, while patients can sign up to browse doctors, select a preferred provider, and book appointments directly.
+
 
 ### 1.3 Definitions, Acronyms and Abbreviations                                                                                                                                                                          |
 
 ### 1.4 References
-List any other documents or Web addresses to which this SRS refers. These may include user interface style guides, contracts, standards, system requirements specifications, use case documents, or a vision and scope document. Provide enough information so that the reader could access a copy of each reference, including title, author, version number, date, and source or location.
+* Java - A programming language originally developed by James Gosling at Sun Microsystems. We will be using this language to build the backend service for LocalHarvest Hub.
+* Postgresql - Open-source relational database management system.
+* API - Application Programming Interface. This will be used to interface the backend and the fronted of our application. 
+* HTML - Hypertext Markup Language. This is the code that will be used to structure and design the web application and its content.
+* CSS - Cascading Style Sheets. Will be used to add styles and appearance to the web app.
+* JavaScript - An object-oriented computer programming language commonly used to create interactive effects within web browsers.Will be used in conjuction with HTML and CSS to make the web app.
+* VS Code - An integrated development environment (IDE) for Java. This is where our system will be created. 
 
 ### 1.5 Document Overview
-Describe what the rest of the document contains and how it is organized.
+Section 1 is the Introduction, and is intended for anyone. Section 2 is about the product and its features, mostly intended for customers, and Section 3 is about the requirements for the product and development process, meant for the developers.
 
 ## 2. Product Overview
 This section should describe the general factors that affect the product and its requirements. This section does not state specific requirements. Instead, it provides a background for those requirements, which are defined in detail in Section 3, and makes them easier to understand.
@@ -81,46 +89,44 @@ List any assumed factors (as opposed to known facts) that could affect the requi
 ## 3. Requirements
 
 ### 3.1 Functional Requirements 
-This section specifies the software product's requirements. Specify all of the software requirements to a level of detail sufficient to enable designers to design a software system to satisfy those requirements, and to enable testers to test that the software system satisfies those requirements.
 
-The specific requirements should:
-* Be uniquely identifiable.
-* State the subject of the requirement (e.g., system, software, etc.) and what shall be done.
-* Optionally state the conditions and constraints, if any.
-* Describe every input (stimulus) into the software system, every output (response) from the software system, and all functions performed by the software system in response to an input or in support of an output.
-* Be verifiable (e.g., the requirement realization can be proven to the customer's satisfaction)
-* Conform to agreed upon syntax, keywords, and terms.
+* The System shall allow doctors to create an account a
+* The System shall allow doctors to change their availability
+* The system shall allow doctors to change their profile description 
+* The system shall allow doctors to make their profile available to patients.
+* the system shall allow doctors to view a list of their past patients
+* the system shall allow doctors to reply to reviews.
 
 #### 3.1.1 User interfaces
-Define the software components for which a user interface is needed. Describe the logical characteristics of each interface between the software product and the users. This may include sample screen images, any GUI standards or product family style guides that are to be followed, screen layout constraints, standard buttons and functions (e.g., help) that will appear on every screen, keyboard shortcuts, error message display standards, and so on. Details of the user interface design should be documented in a separate user interface specification.
-
-Could be further divided into Usability and Convenience requirements.
+Web pages built with HTML CSS and JavaScript
 
 #### 3.1.2 Hardware interfaces
-Describe the logical and physical characteristics of each interface between the software product and the hardware components of the system. This may include the supported device types, the nature of the data and control interactions between the software and the hardware, and communication protocols to be used.
+Any device with a web browser
 
 #### 3.1.3 Software interfaces
-Describe the connections between this product and other specific software components (name and version), including databases, operating systems, tools, libraries, and integrated commercial components. Identify the data items or messages coming into the system and going out and describe the purpose of each. Describe the services needed and the nature of communications. Refer to documents that describe detailed application programming interface protocols. Identify data that will be shared across software components. If the data sharing mechanism must be implemented in a specific way (for example, use of a global data area in a multitasking operating system), specify this as an implementation constraint.
+* Java jdk
+* PostgreSQL
 
 ### 3.2 Non Functional Requirements 
 
 #### 3.2.1 Performance
-If there are performance requirements for the product under various circumstances, state them here and explain their rationale, to help the developers understand the intent and make suitable design choices. Specify the timing relationships for real time systems. Make such requirements as specific as possible. You may need to state performance requirements for individual functional requirements or features.
+* CuraHub will allow any user to log in within 30 seconds
+* The CuraHub website will not lag significantly while navigating the website.
 
 #### 3.2.2 Security
-Specify any requirements regarding security or privacy issues surrounding use of the product or protection of the data used or created by the product. Define any user identity authentication requirements. Refer to any external policies or regulations containing security issues that affect the product. Define any security or privacy certifications that must be satisfied.
+* any sensitive user info will be encrypted using their password
 
 #### 3.2.3 Reliability
-Specify the factors required to establish the required reliability of the software system at time of delivery.
+
 
 #### 3.2.4 Availability
-Specify the factors required to guarantee a defined availability level for the entire system such as checkpoint, recovery, and restart.
+* Any maintenance will be done late at night 
 
 #### 3.2.5 Compliance
-Specify the requirements derived from existing standards or regulations
+
 
 #### 3.2.6 Cost
-Specify monetary cost of the software product.
+* We wont spend money on this project
 
 #### 3.2.7 Deadline
-Specify schedule for delivery of the software product.
+* The project will be finished by December 2025
