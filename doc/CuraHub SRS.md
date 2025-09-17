@@ -44,19 +44,27 @@ Table of Contents
 ## 1. Introduction
 
 ### 1.1 Document Purpose
-Describe the purpose of the SRS and its intended audience.
+The purpoe of the SRS document is to describe the different requirements for the user and developer view for the CuraHub application.
+
+User-oriented requirements describe the program from the users point of view, basically telling them what the application will be doing. However, Developer-oriented requirements describe the application in a software developmer's point of view, such as describing functional and performance requirements. 
 
 ### 1.2 Product Scope
-Identify the product whose software requirements are specified in this document, including the revision or release number. Explain what the product that is covered by this SRS will do, particularly if this SRS describes only part of the system or a single subsystem. 
-Provide a short description of the software being specified and its purpose, including relevant benefits, objectives, and goals. Relate the software to corporate goals or business strategies. If a separate vision and scope document is available, refer to it rather than duplicating its contents here.
+CuraHub is a web-based application that connects doctors and patients through an appointment scheduling system. Doctors can register on the platform to create profiles and offer available appointment slots, while patients can sign up to browse doctors, select a preferred provider, and book appointments directly.
+
 
 ### 1.3 Definitions, Acronyms and Abbreviations                                                                                                                                                                          |
 
 ### 1.4 References
-List any other documents or Web addresses to which this SRS refers. These may include user interface style guides, contracts, standards, system requirements specifications, use case documents, or a vision and scope document. Provide enough information so that the reader could access a copy of each reference, including title, author, version number, date, and source or location.
+* Java - A programming language originally developed by James Gosling at Sun Microsystems. We will be using this language to build the backend service for LocalHarvest Hub.
+* Postgresql - Open-source relational database management system.
+* API - Application Programming Interface. This will be used to interface the backend and the fronted of our application. 
+* HTML - Hypertext Markup Language. This is the code that will be used to structure and design the web application and its content.
+* CSS - Cascading Style Sheets. Will be used to add styles and appearance to the web app.
+* JavaScript - An object-oriented computer programming language commonly used to create interactive effects within web browsers.Will be used in conjuction with HTML and CSS to make the web app.
+* VS Code - An integrated development environment (IDE) for Java. This is where our system will be created. 
 
 ### 1.5 Document Overview
-Describe what the rest of the document contains and how it is organized.
+Section 1 is the Introduction, and is intended for anyone. Section 2 is about the product and its features, mostly intended for customers, and Section 3 is about the requirements for the product and development process, meant for the developers.
 
 ## 2. Product Overview
 This section should describe the general factors that affect the product and its requirements. This section does not state specific requirements. Instead, it provides a background for those requirements, which are defined in detail in Section 3, and makes them easier to understand.
@@ -112,7 +120,7 @@ Any device with a web browser
 
 
 #### 3.2.4 Availability
-Any maintenance will be done late at night 
+* Any maintenance will be done late at night 
 
 #### 3.2.5 Compliance
 
