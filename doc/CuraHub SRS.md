@@ -2,9 +2,9 @@
 ## For <project name>
 
 Version 0.1  
-Prepared by <author>  
-<organization>  
-<date created> 
+Prepared by Andrew Peterson & Ramon Saturnino  
+CSC-340  
+09/17/2025
 
 Table of Contents
 =================
@@ -37,7 +37,7 @@ Table of Contents
 ## Revision History
 | Name | Date    | Reason For Changes  | Version   |
 | ---- | ------- | ------------------- | --------- |
-|      |         |                     |           |
+|Andrew| 09/17   | initial SRS         |  0.1      |
 |      |         |                     |           |
 |      |         |                     |           |
 
