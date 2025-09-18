@@ -67,9 +67,9 @@ CuraHub is a web-based application that connects doctors and patients through an
 Section 1 is the Introduction, and is intended for anyone. Section 2 is about the product and its features, mostly intended for customers, and Section 3 is about the requirements for the product and development process, meant for the developers.
 
 ## 2. Product Overview
-CuraHub is a comprehensive web-based healthcare appointment scheduling platform designed to bridge the gap between healthcare providers and patients. The system serves as a digital marketplace where doctors can establish their professional presence, manage their availability, and connect with patients seeking medical care. Patients benefit from an intuitive interface that allows them to discover healthcare providers, compare options, and book appointments seamlessly.
+CuraHub is a comprehensive web based healthcare appointment scheduling platform designed to bridge the gap between healthcare providers and patients. The system serves as a digital marketplace where doctors can establish their professional presence, manage their availability, and connect with patients seeking medical care. Patients benefit from an intuitive interface that allows them to discover healthcare providers, compare options, and book appointments seamlessly.
 
-The platform operates on a dual-sided model, catering to both healthcare professionals who need efficient practice management tools and patients who require convenient access to healthcare services. CuraHub eliminates traditional barriers in healthcare scheduling by providing real-time availability, transparent provider information, and streamlined booking processes that work across all modern web browsers and devices.
+The platform operates on a dual sided model, catering to both healthcare professionals who need efficient practice management tools and patients who require convenient access to healthcare services. CuraHub eliminates traditional barriers in healthcare scheduling by providing real-time availability, transparent provider information, and streamlined booking processes that work across all modern web browsers and devices.
 
 ### 2.1 Product Functions
 CuraHub provides the following major functions organized by user type:
@@ -77,9 +77,9 @@ CuraHub provides the following major functions organized by user type:
 **For Doctors:**
 * Account creation and profile management
 * Availability scheduling and management
-* Profile customization and visibility settings
 * Patient history and appointment tracking
 * Review management and response capabilities
+* Approve or reject potential patients
 
 **For Patients:**
 * User registration and account management
@@ -92,13 +92,13 @@ CuraHub provides the following major functions organized by user type:
 * User authentication and authorization
 * Appointment matching and scheduling
 * Data storage and retrieval
-* Web-based user interface delivery
+* Web based user interface delivery
 
 ### 2.2 Product Constraints
 The following constraints limit the developer's options for CuraHub:
 
 **Technical Constraints:**
-* Web-based application requiring modern web browsers
+* Web based application requiring modern web browsers
 * Must be compatible with Java JDK and PostgreSQL database
 * Development environment limited to VS Code IDE
 * No budget allocation for third-party services or tools
@@ -106,7 +106,7 @@ The following constraints limit the developer's options for CuraHub:
 **Interface Constraints:**
 * User interface must be built using HTML, CSS, and JavaScript
 * Must support any device with a web browser
-* No mobile app development - web-responsive design only
+* No mobile app development web responsive design only
 
 **Quality of Service Constraints:**
 * Login process must complete within 30 seconds
@@ -173,6 +173,7 @@ CuraHub serves two primary user classes with distinct characteristics and needs:
 
 ### 3.1 Functional Requirements 
 
+#### 3.1.1 Doctor Requirements
 * The System shall allow doctors to create an account a
 * The System shall allow doctors to change their availability
 * The system shall allow doctors to change their profile description 
@@ -180,13 +181,23 @@ CuraHub serves two primary user classes with distinct characteristics and needs:
 * the system shall allow doctors to view a list of their past patients
 * the system shall allow doctors to reply to reviews.
 
-#### 3.1.1 User interfaces
+#### 3.1.2 Patient Requirements
+* The System shall allow patients to create an account
+* The System shall allow patients to search for doctors by specialty or location
+* The System shall allow patients to view doctor profiles and availability
+* The System shall allow patients to book appointments with available doctors
+* The System shall allow patients to cancel or reschedule their appointments
+* The System shall allow patients to view their appointment history
+* The System shall allow patients to write reviews and rate doctors
+* The System shall allow patients to update their personal information and preferences
+
+#### 3.1.3 User interfaces
 Web pages built with HTML CSS and JavaScript
 
-#### 3.1.2 Hardware interfaces
+#### 3.1.4 Hardware interfaces
 Any device with a web browser
 
-#### 3.1.3 Software interfaces
+#### 3.1.5 Software interfaces
 * Java jdk
 * PostgreSQL
 
