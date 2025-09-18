@@ -38,7 +38,7 @@ Table of Contents
 | Name | Date    | Reason For Changes  | Version   |
 | ---- | ------- | ------------------- | --------- |
 |Andrew| 09/17   | initial SRS         |  0.1      |
-|      |         |                     |           |
+|Ramon | 09/17   | initial SRS         |  0.1      |
 |      |         |                     |           |
 
 ## 1. Introduction
@@ -67,29 +67,113 @@ CuraHub is a web-based application that connects doctors and patients through an
 Section 1 is the Introduction, and is intended for anyone. Section 2 is about the product and its features, mostly intended for customers, and Section 3 is about the requirements for the product and development process, meant for the developers.
 
 ## 2. Product Overview
-This section should describe the general factors that affect the product and its requirements. This section does not state specific requirements. Instead, it provides a background for those requirements, which are defined in detail in Section 3, and makes them easier to understand.
+CuraHub is a comprehensive web based healthcare appointment scheduling platform designed to bridge the gap between healthcare providers and patients. The system serves as a digital marketplace where doctors can establish their professional presence, manage their availability, and connect with patients seeking medical care. Patients benefit from an intuitive interface that allows them to discover healthcare providers, compare options, and book appointments seamlessly.
+
+The platform operates on a dual sided model, catering to both healthcare professionals who need efficient practice management tools and patients who require convenient access to healthcare services. CuraHub eliminates traditional barriers in healthcare scheduling by providing real-time availability, transparent provider information, and streamlined booking processes that work across all modern web browsers and devices.
 
 ### 2.1 Product Functions
-Summarize the major functions the product must perform or must let the user perform. Details will be provided in Section 3, so only a high level summary (such as a bullet list) is needed here. Organize the functions to make them understandable to any reader of the SRS. A picture of the major groups of related requirements and how they relate, such as a top level data flow diagram or object class diagram, is often effective.
+CuraHub provides the following major functions organized by user type:
+
+**For Doctors:**
+* Account creation and profile management
+* Availability scheduling and management
+* Patient history and appointment tracking
+* Review management and response capabilities
+* Approve or reject potential patients
+
+**For Patients:**
+* User registration and account management
+* Doctor search and discovery
+* Appointment booking and scheduling
+* Review and rating system
+* Appointment history tracking
+
+**System Functions:**
+* User authentication and authorization
+* Appointment matching and scheduling
+* Data storage and retrieval
+* Web based user interface delivery
 
 ### 2.2 Product Constraints
-This subsection should provide a general description of any other items that will limit the developer’s options. These may include:  
+The following constraints limit the developer's options for CuraHub:
 
-* Interfaces to users, other applications or hardware.  
-* Quality of service constraints.  
-* Standards compliance.  
-* Constraints around design or implementation.
+**Technical Constraints:**
+* Web based application requiring modern web browsers
+* Must be compatible with Java JDK and PostgreSQL database
+* Development environment limited to VS Code IDE
+* No budget allocation for third-party services or tools
+
+**Interface Constraints:**
+* User interface must be built using HTML, CSS, and JavaScript
+* Must support any device with a web browser
+* No mobile app development web responsive design only
+
+**Quality of Service Constraints:**
+* Login process must complete within 30 seconds
+* Website navigation must not lag significantly
+* Maintenance windows restricted to late night hours
+
+**Implementation Constraints:**
+* Project completion deadline: December 2025
+* Zero-cost development approach
+* Team size limited to two developers
   
 ### 2.3 User Characteristics
-Identify the various user classes that you anticipate will use this product. User classes may be differentiated based on frequency of use, subset of product functions used, technical expertise, security or privilege levels, educational level, or experience. Describe the pertinent characteristics of each user class. Certain requirements may pertain only to certain user classes. Distinguish the most important user classes for this product from those who are less important to satisfy.
+CuraHub serves two primary user classes with distinct characteristics and needs:
+
+**Primary User Class - Patients:**
+* **Frequency of Use:** Occasional to regular users seeking healthcare appointments
+* **Technical Expertise:** Basic to intermediate web browsing skills
+* **Primary Functions:** Doctor search, appointment booking, review submission
+* **Security Level:** Standard user authentication required
+* **Educational Level:** General public with basic computer literacy
+* **Experience:** Familiar with online booking systems and web interfaces
+
+**Secondary User Class - Doctors:**
+* **Frequency of Use:** Regular to frequent users managing their practice
+* **Technical Expertise:** Basic to intermediate computer skills
+* **Primary Functions:** Profile management, availability scheduling, patient tracking
+* **Security Level:** Enhanced authentication for sensitive patient data access
+* **Educational Level:** Professional healthcare providers with varying technical comfort
+* **Experience:** May have experience with other healthcare management systems
+
+**User Class Priority:** Patients are the most important user class as they drive the demand for the platform. Doctors are essential for platform viability but secondary in terms of user experience priority.
 
 ### 2.4 Assumptions and Dependencies
-List any assumed factors (as opposed to known facts) that could affect the requirements stated in the SRS. These could include third-party or commercial components that you plan to use, issues around the development or operating environment, or constraints. The project could be affected if these assumptions are incorrect, are not shared, or change. Also identify any dependencies the project has on external factors, such as software components that you intend to reuse from another project, unless they are already documented elsewhere (for example, in the vision and scope document or the project plan).
+
+**Development Environment Assumptions:**
+* VS Code IDE will remain available and functional throughout development
+* Java JDK will be compatible with all required features
+* PostgreSQL database will provide adequate performance for expected user load
+* Development team will have consistent access to development tools
+
+**Technical Dependencies:**
+* **Java JDK:** Required for backend development and API implementation
+* **PostgreSQL:** Database management system for storing user and appointment data
+* **Web Browser Compatibility:** Assumes users have modern browsers supporting HTML5, CSS3, and JavaScript
+* **Internet Connectivity:** Assumes users have reliable internet access for web-based functionality
+
+**External Dependencies:**
+* No third-party commercial components or services (maintaining zero-cost approach)
+* No external APIs or services beyond standard web technologies
+* No dependencies on other software projects or reusable components
+
+**Operational Assumptions:**
+* Users will have basic computer literacy for web navigation
+* Healthcare providers will be willing to adopt web-based scheduling systems
+* Patients will trust online appointment booking for healthcare services
+* System will operate within standard business hours with late-night maintenance windows
+
+**Risk Factors:**
+* Changes in Java JDK or PostgreSQL versions could impact development
+* Browser compatibility issues could limit user accessibility
+* Internet connectivity issues could affect system availability
 
 ## 3. Requirements
 
 ### 3.1 Functional Requirements 
 
+#### 3.1.1 Doctor Requirements
 * The System shall allow doctors to create an account a
 * The System shall allow doctors to change their availability
 * The system shall allow doctors to change their profile description 
@@ -97,13 +181,23 @@ List any assumed factors (as opposed to known facts) that could affect the requi
 * the system shall allow doctors to view a list of their past patients
 * the system shall allow doctors to reply to reviews.
 
-#### 3.1.1 User interfaces
+#### 3.1.2 Patient Requirements
+* The System shall allow patients to create an account
+* The System shall allow patients to search for doctors by specialty or location
+* The System shall allow patients to view doctor profiles and availability
+* The System shall allow patients to book appointments with available doctors
+* The System shall allow patients to cancel or reschedule their appointments
+* The System shall allow patients to view their appointment history
+* The System shall allow patients to write reviews and rate doctors
+* The System shall allow patients to update their personal information and preferences
+
+#### 3.1.3 User interfaces
 Web pages built with HTML CSS and JavaScript
 
-#### 3.1.2 Hardware interfaces
+#### 3.1.4 Hardware interfaces
 Any device with a web browser
 
-#### 3.1.3 Software interfaces
+#### 3.1.5 Software interfaces
 * Java jdk
 * PostgreSQL
 
