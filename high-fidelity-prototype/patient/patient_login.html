@@ -1,26 +1,29 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="login.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CuraHub — Patient Login</title>
+<link rel="stylesheet" href="../styles.css">
 </head>
-
 <body>
-    <div class="login-box">
-        <div class="infodiv">
-            Email:
-            <br>
-            <input type="email" class="input-field" placeholder="Enter email...">
-        </div>
-        <div class="infodiv">
-            Password:
-            <br>
-            <input type="password" class="input-field" placeholder="Enter password...">
-        </div>
-        <div class="infodiv">
-            <a href="success.html">
-            <button class="enter-button">
-                Enter
-            </button>
-            </a>
-        </div>
-    </div>
+<div class="wrap">
+  <a class="btn secondary" href="../landing.html">← Back</a>
+  <div class="card">
+    <h1 class="title">Welcome back</h1>
+    <p class="subtitle">Log in to manage your appointments and health records.</p>
+    <form onsubmit="window.location.href='./dashboard_patient.html'; return false;">
+      <label>Email</label>
+      <input type="email" placeholder="jane@example.com" required>
+      <label>Password</label>
+      <input type="password" placeholder="••••••••" required>
+      <div class="actions">
+        <button class="btn primary" type="submit">Log In</button>
+        <a class="btn secondary" href="./patient_signup.html">Create an account</a>
+      </div>
+      <small>This is a prototype screen.</small>
+    </form>
+  </div>
+</div>
 </body>
+</html>
