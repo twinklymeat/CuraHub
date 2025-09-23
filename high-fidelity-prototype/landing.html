@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CuraHub — Connect Patients and Doctors</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css">
+</head>
+
+
+<body>
+    <div class="container">
+      <nav class="nav">
+        <a class="brand" href="./landing.html">
+          <span class="brand-logo">CH</span>
+          CuraHub
+        </a>
+        <div class="nav-actions">
+          <a href="./patient/patient_login.html">Patient Login</a>
+        </div>
+      </nav>
+    
+      <main class="hero">
+        <section class="hero-card">
+          <div class="left">
+            <h1 class="title">Patients</h1>
+             <p class="subtitle">Find doctors, compare availability, and book in minutes.</p>
+             <img class="hero-image" alt="Telehealth illustration" src="https://www.multipure.com/product_images/uploaded_images/family-double-piggyback-small.jpg">
+            <div class="cta-group">
+              <a class="btn btn-primary" href="./patient/patient_signup.html">New Patient — Sign Up</a>
+              <a class="btn btn-secondary" href="./patient/patient_login.html">Returning Patient — Log In</a>
+            </div>
+          </div>
+          <div class="right">
+            <h1 class="title">Doctors</h1>
+            <p class="subtitle">Showcase your practice and manage availability.</p>
+             <img class="hero-image" alt="Telehealth illustration" src="https://www.mua.edu/uploads/sites/10/2023/02/istock-482499394.webp?w=1536">
+            <div class="cta-group">
+              <a class="btn btn-primary" href="#">New Doctor — Sign Up</a>
+              <a class="btn btn-secondary" href="#">Returning Doctor — Log In</a>
+            </div>
+            <p class="muted">Secure, responsive, and built for modern care.</p>
+          </div>
+        </section>
+      </main>
+    
+      <footer class="footer">© <span id="year"></span> CuraHub</footer>
+    </div>
+    <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+
+
+
+
+</html>
+
+
