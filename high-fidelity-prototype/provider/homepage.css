@@ -15,7 +15,7 @@ img {
 .mainbox {
     background-color: #f1f1f1;
     width: 70%;
-    height: fit-content;
+    height:auto;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -29,28 +29,38 @@ img {
 }
 
 .profilebox {
+    
     background-color: #dddddd;
-    height:120px;
+    height:auto;
+    display: flex;
+    min-height: 120px;
     width: 100%;
     /* margin-left: 5%; */
     /* margin-right: 5%; */
     /* margin-top: 20px; */
     margin-bottom: 20px;
     border-radius: 10px;
+    object-fit: contain;
+    padding: 10px;
 
 }
 
 .profile-info {
     color: #515151;
     font-size: 30px;
-    padding-top: 10px;
     float: left;
+    padding-top: 10px;
+    width: calc(100% - 300px);
+    float: left;
+    height:auto;
 }
 
 .profile-expertise {
     font-size: 20px;
     margin-left: 30px;
     margin-top: 15px;
+    width: 100%;
+    height: auto;
 }
 
 .schedule {
@@ -75,7 +85,7 @@ img {
 }
 
 .appointment-info {
-    width:100%;
+    width:calc(100%-120px);
     height: fit-content;
     padding-top: 20px;
     padding-right: 20px;
@@ -97,7 +107,8 @@ name {
     margin-right: 20px;
     height: 36px;
     width:80px;
-    margin-top: 42px;
+    margin-left: 40px;
+    margin-top: calc(100% - 50% - 24px);
     font-size: 20px;
     background-color: #5286ff;
     border:none;
