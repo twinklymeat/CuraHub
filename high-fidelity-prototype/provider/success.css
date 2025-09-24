@@ -1,0 +1,73 @@
+.bodyclass {
+    background-color: #dddddd;
+}
+
+img {
+    width: 100%;
+    height:auto;
+    aspect-ratio: 1 / 1;
+    /* float:left; */
+    /* margin-bottom: 20px; */
+    border-radius: 50%;
+}
+
+
+.success-box {
+    width:50%;
+    height: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #eeeeee;
+    /* border: 2px solid #a1a1c1; */
+    box-shadow: inset -2px -2px 0px #a1a1a1;
+    border-radius: 10px;
+
+    color:red;
+}
+
+.text-div {
+    width:fit-content;
+    top: 60%;
+    left: 50%;
+    /* margin-top: 50%;
+    margin-left: 50%; */
+    transform: translate(-50%, -50%);
+    color:#515151;
+    font-size: 30px;
+    text-align: center;
+    position:absolute;
+}
+
+.profile-picture {
+    /* width:40%; */
+    height: 200px;
+    /* max-width: ; */
+    max-height: 40%;
+    aspect-ratio: 1 / 1;
+    background-color: #a1a1a1;
+    position: absolute;
+    left: 50%;
+    top: 5%;
+    transform: translate(-50%, 0%);
+    border-radius: 50%;
+    padding: 5px;
+    object-fit: scale-down;
+}
+
+.continuebutton {
+    bottom: 15%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    width: 200px;
+    height: 50px;
+    background-color: #5286ff;
+    position: absolute;
+    border: none;
+    box-shadow: 2px 2px 0 #a1a1a1;
+    border-radius: 10px;
+    font-size: 25px;
+    color:#f1f1f1;
+    font-family: 'Segoe UI';
+}
