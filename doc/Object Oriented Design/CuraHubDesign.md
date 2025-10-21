@@ -3,7 +3,7 @@
 Version 1  
 Prepared by Ramon Saturnino & Andrew Peterson
 CSC-340 Team 7  
-December 2024
+October 2025
 
 Table of Contents
 =================
@@ -31,7 +31,7 @@ The platform operates on a dual sided model, catering to both healthcare profess
 
 ## 2. Use Cases
 ### 2.1 Use Case Model
-![Use Case Model - Placeholder for CuraHub Use Case Diagram]
+![Use Case Model](https://github.com/twinklymeat/CuraHub/blob/rsaturnino-milestone4/doc/Object%20Oriented%20Design/Use-Case%20Diagram.png)
 
 ### 2.2 Use Case Descriptions
 
@@ -68,7 +68,7 @@ A patient shall be able to view their upcoming appointments, cancel or reschedul
 A patient may write a review and rating for a doctor they have had an appointment with, helping other patients make informed decisions.
 
 ## 3. UML Class Diagram
-![UML Class Diagram - Placeholder for CuraHub Class Diagram]
+![UML Class Diagram](link)
 
 ## 4. Database Schema
-![Database Schema - Placeholder for CuraHub Database Schema]
+![Database Schema](link)
