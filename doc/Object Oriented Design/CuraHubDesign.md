@@ -71,4 +71,4 @@ A patient may write a review and rating for a doctor they have had an appointmen
 ![UML Class Diagram](https://github.com/twinklymeat/CuraHub/blob/rsaturnino-milestone4/doc/Object%20Oriented%20Design/UML%20Diagram.png)
 
 ## 4. Database Schema
-![Database Schema](link)
+![Database Schema](Schema_Diagram.png)
