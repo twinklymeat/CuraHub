@@ -31,7 +31,7 @@ The platform operates on a dual sided model, catering to both healthcare profess
 
 ## 2. Use Cases
 ### 2.1 Use Case Model
-![Use Case Model] (https://github.com/twinklymeat/CuraHub/blob/rsaturnino-milestone4/doc/Object%20Oriented%20Design/Use-Case%20Diagram.png)
+![Use Case Model](https://github.com/twinklymeat/CuraHub/blob/rsaturnino-milestone4/doc/Object%20Oriented%20Design/Use-Case%20Diagram.png)
 
 ### 2.2 Use Case Descriptions
 
