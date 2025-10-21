@@ -68,7 +68,7 @@ A patient shall be able to view their upcoming appointments, cancel or reschedul
 A patient may write a review and rating for a doctor they have had an appointment with, helping other patients make informed decisions.
 
 ## 3. UML Class Diagram
-![UML Class Diagram](link)
+![UML Class Diagram](https://github.com/twinklymeat/CuraHub/blob/rsaturnino-milestone4/doc/Object%20Oriented%20Design/UML%20Diagram.png)
 
 ## 4. Database Schema
 ![Database Schema](link)
