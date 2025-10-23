@@ -1,3 +1,3 @@
 *.DS_Store
 application.properties
-backend-api/target/*
+backend-api/target/** 
