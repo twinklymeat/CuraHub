@@ -25,33 +25,73 @@ public class Availability {
 
     @ManyToOne
     @JoinColumn(name="doctor")
-    private Doctor doctor;
+    private Doctor doctorID;
 
     @Column(nullable = false)
-    private LocalDateTime startTime;
+    private String startTime;
 
     @Column(nullable = false)
-    private LocalDateTime endTime;
+    private String endTime;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name="length")
     private Time length;
 
     public Availability(){
     }
 
-    public Availability(long id, Doctor doctor, LocalDateTime start, LocalDateTime end, Time length){
+    public Availability(long id, Doctor doctor, String start, String end, Time length){
         this.id = id;
-        this.doctor = doctor;
+        this.doctorID = doctor;
         this.startTime = start;
         this.endTime = end;
         this.length = length;
     }
 
-    public Availability(Doctor doctor, LocalDateTime start, LocalDateTime end, Time length){
-        this.doctor = doctor;
+    public Availability(Doctor doctor, String start, String end, Time length){
+        this.doctorID = doctor;
         this.startTime = start;
         this.endTime = end;
         this.length = length;
+    }
+
+    public long getID() {
+        return id;
+    }
+
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public Time getLength() {
+        return length;
+    }
+    
+    public Doctor getDoctor() {
+        return doctorID;
+    }
+
+    public void setID(long id) {
+        this.id = id;
+    }
+
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
+    }
+
+    public void setLength(Time length) {
+        this.length = length;
+    }
+    
+    public void setDoctor(Doctor doctor) {
+        this.doctorID = doctor;
     }
 
 }

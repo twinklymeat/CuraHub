@@ -32,6 +32,8 @@ public class User {
     @Column(nullable = false)
     private String phone;
     
+    @Column
+    private String name;
 
     public User() {
 
@@ -43,6 +45,7 @@ public class User {
         this.lastName = lastName;
         this.email = email;
         this.phone = phone;
+        this.name = firstName + " " + lastName;
     }
 
     public User(String firstName, String lastName, String email, String phone) {
@@ -50,6 +53,7 @@ public class User {
         this.lastName = lastName;
         this.email = email;
         this.phone = phone;
+        this.name = firstName + " " + lastName;
     }
 
     public long getID() {
