@@ -1,138 +1,114 @@
-### CuraHub Backend API — Sample Documentation (Draft)
+### CuraHub Backend API — Current Endpoints
 
-This is a starter API guide for the CuraHub project. It uses placeholders until real values are finalized.
+## Patient API Endpoints
 
----
-
-### Base Information
-- **Base URL**: `<BASE_URL>` (e.g., `http://localhost:8080` in development)
-- **API Version**: `v1`
-- **Global Prefix**: `/api`
-
-Example full path: `<BASE_URL>/api/v1/...`
-
----
-
-### Resources and Endpoints (Draft)
-
-#### Users
-- **POST** `/api/v1/auth/signup` — Create a new user (patient/provider)
-  - Body:
-  ```json
-  {
-    "firstName": "<STRING>",
-    "lastName": "<STRING>",
-    "email": "<EMAIL>",
-    "password": "<PASSWORD>",
-    "role": "<PATIENT|DOCTOR|ADMIN>"
-  }
-  ```
-
-- **POST** `/api/v1/auth/login` — Authenticate and get token
-  - Body:
-  ```json
-  { "email": "<EMAIL>", "password": "<PASSWORD>" }
-  ```
-  - Response:
-  ```json
-  { "token": "<JWT_TOKEN>", "expiresIn": 3600 }
-  ```
-
-- **GET** `/api/v1/users/{id}` — Get user by ID [Auth required]
-- **GET** `/api/v1/users/me` — Get current user profile [Auth required]
-- **PUT** `/api/v1/users/me` — Update current user profile [Auth required]
-
-Example:
-```bash
-curl -H "Authorization: Bearer <JWT_TOKEN>" \
-  <BASE_URL>/api/v1/users/me
+### Users (`/api/users`)
+- GET `/api/users` — List users
+```http
+GET /api/users
 ```
 
-#### Doctors
-- **GET** `/api/v1/doctors` — List doctors (optional filters: `specialty`, `name`)
-- **GET** `/api/v1/doctors/{id}` — Get doctor by ID
-- **POST** `/api/v1/doctors` — Create doctor [Admin/Doctor]
-  - Body:
-  ```json
-  {
-    "firstName": "<STRING>",
-    "lastName": "<STRING>",
-    "email": "<EMAIL>",
-    "specialty": "<STRING>",
-    "bio": "<STRING>"
-  }
-  ```
-- **PUT** `/api/v1/doctors/{id}` — Update doctor [Admin/Doctor]
-- **DELETE** `/api/v1/doctors/{id}` — Delete doctor [Admin]
-
-#### Availability
-- **GET** `/api/v1/availability?doctorId=<ID>&from=<ISO>&to=<ISO>` — List availability slots
-- **POST** `/api/v1/availability` — Create slot [Doctor]
-  - Body:
-  ```json
-  {
-    "doctorId": "<UUID>",
-    "start": "<ISO_DATETIME>",
-    "end": "<ISO_DATETIME>",
-    "location": "<STRING>"
-  }
-  ```
-- **DELETE** `/api/v1/availability/{id}` — Remove slot [Doctor/Admin]
-
-#### Appointments
-- **GET** `/api/v1/appointments?patientId=<ID>&doctorId=<ID>&from=<ISO>&to=<ISO>` — List appointments
-- **POST** `/api/v1/appointments` — Book appointment [Patient]
-  - Body:
-  ```json
-  {
-    "patientId": "<UUID>",
-    "doctorId": "<UUID>",
-    "start": "<ISO_DATETIME>",
-    "end": "<ISO_DATETIME>",
-    "reason": "<STRING>"
-  }
-  ```
-- **GET** `/api/v1/appointments/{id}` — Appointment details
-- **PUT** `/api/v1/appointments/{id}/cancel` — Cancel appointment [Patient/Doctor]
-
-#### Reviews
-- **GET** `/api/v1/reviews?doctorId=<ID>` — List reviews for a doctor
-- **POST** `/api/v1/reviews` — Create review [Patient]
-  - Body:
-  ```json
-  {
-    "doctorId": "<UUID>",
-    "patientId": "<UUID>",
-    "rating": 5,
-    "comment": "<STRING>"
-  }
-  ```
-
----
-
-### Request/Response Examples
-
-- Create Appointment
-```bash
-curl -X POST <BASE_URL>/api/v1/appointments \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer <JWT_TOKEN>" \
-  -d '{
-    "patientId": "<UUID>",
-    "doctorId": "<UUID>",
-    "start": "2025-10-28T09:00:00Z",
-    "end": "2025-10-28T09:30:00Z",
-    "reason": "Follow-up"
-  }'
+- GET `/api/users/{id}` — Get user by ID
+```http
+GET /api/users/1
 ```
 
-- Fetch Doctor Availability
-```bash
-curl "<BASE_URL>/api/v1/availability?doctorId=<UUID>&from=2025-10-27T00:00:00Z&to=2025-11-03T00:00:00Z"
+- POST `/api/users` — Create user
+```http
+POST /api/users
+Content-Type: application/json
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "john@example.com",
+  "phone": "555-555-5555"
+}
 ```
 
----
+- PUT `/api/users/{id}` — Update user
+```http
+PUT /api/users/1
+Content-Type: application/json
 
-### Notes
-- This is a draft. Replace placeholders with real paths, fields, and auth details as controllers/services are finalized in the Spring Boot app.
-- Coordinate response schemas with the data models in the codebase (`User`, `Doctor`, `Availability`, `Appointments`, `Reviews`).
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "john.updated@example.com",
+  "phone": "555-555-1234"
+}
+```
+
+- DELETE `/api/users/{id}` — Delete user
+```http
+DELETE /api/users/1
+```
+
+## Doctor API Endpoints
+
+### Doctors (`/api/doctors`)
+- GET `/api/doctors` — List doctors
+```http
+GET /api/doctors
+```
+
+- GET `/api/doctors/{id}` — Get doctor by ID
+```http
+GET /api/doctors/1
+```
+
+- GET `/api/doctors/search?name={name}` — Search doctors by name
+```http
+GET /api/doctors/search?name=Smith
+```
+
+- POST `/api/doctors` — Create doctor
+```http
+POST /api/doctors
+Content-Type: application/json
+
+{
+  "user": { "id": 1 },
+  "description": "Board-certified cardiologist"
+}
+```
+
+- DELETE `/api/doctors/{id}` — Delete doctor
+```http
+DELETE /api/doctors/1
+```
+
+### Availability (`/api/availability`)
+- GET `/api/availability` — List availability
+```http
+GET /api/availability
+```
+
+- GET `/api/availability/{id}` — Get availability by ID
+```http
+GET /api/availability/1
+```
+
+- GET `/api/availability/doctor/{id}` — List availability by doctor ID
+```http
+GET /api/availability/doctor/1
+```
+
+- POST `/api/availability` — Create availability
+```http
+POST /api/availability
+Content-Type: application/json
+
+{
+  "doctor": { "id": 1 },
+  "startTime": "2025-10-28T09:00:00",
+  "endTime": "2025-10-28T12:00:00",
+  "length": "00:30:00"
+}
+```
+
+- DELETE `/api/availability/{id}` — Delete availability
+```http
+DELETE /api/availability/1
+```
+
