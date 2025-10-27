@@ -1,4 +1,4 @@
-package main.java.com.curahub.curahub.user;
+package com.curahub.curahub.user;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
