@@ -60,11 +60,11 @@ public class User {
         return id;
     }
 
-    public String getFName() {
+    public String getFirstName() {
         return firstName;
     }
 
-    public String getLName() {
+    public String getLastName() {
         return lastName;
     }
 

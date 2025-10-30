@@ -30,8 +30,8 @@ public class AvailabilityController {
     }
 
     @GetMapping("/doctor/{id}")
-    public ResponseEntity<Object> getAvailabilityByDoctor(@PathVariable long doctorID) {
-        return ResponseEntity.ok(availabilityService.getAvailabilityByDoctor(doctorID));
+    public ResponseEntity<Object> getAvailabilityByDoctor(@PathVariable long id) {
+        return ResponseEntity.ok(availabilityService.getAvailabilityByDoctor(id));
     }
 
     @PostMapping
