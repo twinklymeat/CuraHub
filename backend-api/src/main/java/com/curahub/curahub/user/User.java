@@ -72,11 +72,11 @@ public class User {
         return firstName + " " + lastName;
     }
 
-    public void setFName(String name) {
+    public void setFirstName(String name) {
         this.firstName = name;
     }
 
-    public void setLName(String name) {
+    public void setLastName(String name) {
         this.lastName = name;
     }
 

@@ -11,7 +11,7 @@ import jakarta.persistence.Table;
 import jakarta.persistence.ManyToOne;
 
 import java.sql.Time;
-import java.time.LocalDateTime;
+//import java.time.LocalDateTime;
 // import java.util.Date;
 
 import com.curahub.curahub.doctor.Doctor;;
