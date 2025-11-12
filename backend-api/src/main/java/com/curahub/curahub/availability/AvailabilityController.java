@@ -30,7 +30,7 @@ public class AvailabilityController {
     }
 
     @GetMapping("/doctor/{id}")
-    public ResponseEntity<Object> getAvailabilityByDoctor(@PathVariable long doctorID) {
+    public ResponseEntity<Object> getAvailabilityByDoctor(@PathVariable("id") long doctorID) {
         return ResponseEntity.ok(availabilityService.getAvailabilityByDoctor(doctorID));
     }
 
