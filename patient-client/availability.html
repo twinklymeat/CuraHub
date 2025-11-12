@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patients — Availability (View-only)</title>
+  <link rel="stylesheet" href="./assets/css/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Availability (View-only)</h1>
+    <nav>
+      <ul>
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./users.html">Users</a></li>
+        <li><a href="./appointments.html">Appointments</a></li>
+        <li><a href="./availability.html">Availability</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <div class="panel">
+      <h2>List All Availability</h2>
+      <div class="actions">
+        <button id="btnListAvail" class="primary">Fetch All Availability</button>
+      </div>
+      <pre id="availListResult" class="result muted">Click "Fetch All Availability"…</pre>
+    </div>
+
+    <div class="panel">
+      <h2>Get Availability by ID</h2>
+      <form id="formGetAvail">
+        <div>
+          <label for="availId">Availability ID</label>
+          <input id="availId" name="id" type="number" min="1" required placeholder="e.g., 1">
+        </div>
+        <div class="actions">
+          <button id="btnGetAvail" class="primary" type="submit">Get Availability</button>
+        </div>
+      </form>
+      <pre id="availGetResult" class="result muted">Submit the form…</pre>
+    </div>
+
+    <div class="panel">
+      <h2>Get Availability by Doctor ID</h2>
+      <form id="formGetAvailByDoctor">
+        <div>
+          <label for="availDoctorId">Doctor ID</label>
+          <input id="availDoctorId" name="doctorId" type="number" min="1" required placeholder="e.g., 1">
+        </div>
+        <div class="actions">
+          <button id="btnGetAvailByDoctor" class="primary" type="submit">Get Availability for Doctor</button>
+        </div>
+      </form>
+      <pre id="availGetDoctorResult" class="result muted">Submit the form…</pre>
+      <div class="hint">Note: If this endpoint returns a path variable error, it may be due to a backend parameter name mismatch.</div>
+    </div>
+  </main>
+  <script src="./assets/js/api.js"></script>
+  <script src="./assets/js/availability.js"></script>
+</body>
+</html>
+
+
