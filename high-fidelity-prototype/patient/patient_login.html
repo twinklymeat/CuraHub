@@ -12,18 +12,21 @@
   <div class="card">
     <h1 class="title">Welcome back</h1>
     <p class="subtitle">Log in to manage your appointments and health records.</p>
-    <form onsubmit="window.location.href='./dashboard_patient.html'; return false;">
+    <form id="loginForm">
       <label>Email</label>
-      <input type="email" placeholder="jane@example.com" required>
+      <input id="loginEmail" type="email" placeholder="jane@example.com" required>
       <label>Password</label>
-      <input type="password" placeholder="••••••••" required>
+      <input id="loginPassword" type="password" placeholder="••••••••" required>
       <div class="actions">
-        <button class="btn primary" type="submit">Log In</button>
+        <button id="loginSubmit" class="btn primary" type="submit">Log In</button>
         <a class="btn secondary" href="./patient_signup.html">Create an account</a>
       </div>
       <small>This is a prototype screen.</small>
+      <div id="loginFeedback" class="muted" style="margin-top:8px"></div>
     </form>
   </div>
 </div>
+<script src="./assets/js/api.js"></script>
+<script src="./assets/js/login.js"></script>
 </body>
 </html>
