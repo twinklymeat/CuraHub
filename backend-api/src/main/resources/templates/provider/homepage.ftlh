@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" type="text/css" href="/css/homepage.css">
+</head>
+<body>
+    <div class="mainbox">
+        <div class="profilebox">
+            <img src="doctorpfp.png" style="float: left;">
+            <div class="profile-info">
+                Dr. Prototype
+                <div class="profile-expertise">
+                    Field: Inatoring; Available 7:00 - 12:00 AM all weekdays
+                    <br>
+                    Office: The building that looks like Ferb's head
+                </div>
+            </div>
+            <div>
+                <a href="editInfo.html"><button class="editButton">Edit</button></a>
+            </div>
+        </div>
+        <p style="font-size: 20px;"> 
+            Scheduled Appointments: 
+        </p>
+        <div class="schedule">
+
+            <div class="appointment">
+                <img src="platypus.png" class="appointment-img"> 
+                <div class="appointment-info">
+                    <name>
+                        A Platypus?
+                    </name>
+                    <br>09/18/25 9:30 AM<br>
+                    <div class="reason">
+                        Reason: <br>
+                        He's just a platypus he doesnt do much
+                    </div>
+                </div>
+            </div>
+            <div class="appointment">
+                <img src="perry-the-platypus.png" class="appointment-img"> 
+                <div class="appointment-info">
+                     <name>
+                        Perry The Platypus?!?!
+                    </name>
+                    <br>09/18/25 10:00 AM<br>
+                    <div class="reason">
+                        Reason: <br>
+                        To defeat evil
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p style="font-size: 20px;"> 
+            Unscheduled Appointments: 
+        </p>
+        <div class="schedule">
+
+            <div class="appointment">
+                <img src="peter.png" class="appointment-img"> 
+                <div class="appointment-info">
+                    <name>
+                        Peter the Panda
+                    </name>
+                    <div class="reason">
+                        Reason: <br>
+                        Rematch
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>

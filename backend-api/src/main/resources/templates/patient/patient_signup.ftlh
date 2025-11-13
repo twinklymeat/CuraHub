@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CuraHub — Patient Sign Up</title>
+<link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<div class="wrap">
+  <a class="btn secondary" href="../landing.html">← Back</a>
+  <div class="card">
+    <h1 class="title">Create your patient account</h1>
+    <p class="subtitle">Book and manage appointments with trusted providers.</p>
+    <form onsubmit="event.preventDefault(); window.location.href='./dashboard_patient.html';">
+      <label>Full Name</label>
+      <input placeholder="Jane Doe" required>
+      <div class="row">
+        <div>
+          <label>Email</label>
+          <input type="email" placeholder="jane@example.com" required>
+        </div>
+        <div>
+          <label>Phone</label>
+          <input type="tel" placeholder="(555) 555-5555">
+        </div>
+      </div>
+      <label>Password</label>
+      <input type="password" placeholder="••••••••" required>
+      <label>Confirm Password</label>
+      <input type="password" placeholder="••••••••" required>
+      <div class="actions">
+        <button class="btn primary" type="submit">Sign Up</button>
+        <a class="btn secondary" href="./patient_login.html">Already have an account?</a>
+      </div>
+      <small>This is a prototype screen.</small>
+    </form>
+  </div>
+</div>
+</body>
+</html>
+
+

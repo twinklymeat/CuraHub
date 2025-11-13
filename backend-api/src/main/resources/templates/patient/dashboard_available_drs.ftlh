@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CuraHub — Available Doctors Dashboard</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <script>
+    function applyForCare(doctorName){
+      alert('Demo: Application started for ' + doctorName);
+    }
+  </script>
+  </head>
+<body>
+  <div class="wrap">
+    <div class="header-row">
+      <a class="btn secondary" href="./dashboard_patient.html">← Back</a>
+      <a class="btn secondary" href="./patient_login.html">Log out</a>
+    </div>
+    <div class="card">
+      <h1 class="title">Available Doctors</h1>
+      <p class="subtitle">Browse providers and apply to receive care. This is a static demo.</p>
+
+      <div class="doctor-grid">
+        <div class="card">
+          <div class="doctor-card">
+            <img class="avatar" alt="Dr. Avery" src="https://i.pravatar.cc/112?img=10">
+            <div class="meta">
+              <h3>Dr. Jordan Avery, MD</h3>
+              <div class="tags">
+                <span class="tag">Primary Care</span>
+                <span class="tag">Telehealth</span>
+              </div>
+              <small>Next availability: Tomorrow • 9:00 AM – 12:00 PM</small>
+            </div>
+            <div class="actions-right">
+              <button class="btn primary" onclick="applyForCare('Dr. Jordan Avery')">Apply for Care</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="doctor-card">
+            <img class="avatar" alt="Dr. Bennett" src="https://i.pravatar.cc/112?img=12">
+            <div class="meta">
+              <h3>Dr. Riley Bennett, DO</h3>
+              <div class="tags">
+                <span class="tag">Family Medicine</span>
+                <span class="tag">Same‑day</span>
+              </div>
+              <small>Next availability: Today • 2:30 PM – 5:00 PM</small>
+            </div>
+            <div class="actions-right">
+              <button class="btn primary" onclick="applyForCare('Dr. Riley Bennett')">Apply for Care</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="doctor-card">
+            <img class="avatar" alt="Dr. Carter" src="https://i.pravatar.cc/112?img=15">
+            <div class="meta">
+              <h3>Dr. Morgan Carter, NP</h3>
+              <div class="tags">
+                <span class="tag">Urgent Care</span>
+                <span class="tag">Virtual</span>
+              </div>
+              <small>Next availability: Thu • 10:00 AM – 4:00 PM</small>
+            </div>
+            <div class="actions-right">
+              <button class="btn primary" onclick="applyForCare('Dr. Morgan Carter')">Apply for Care</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="doctor-card">
+            <img class="avatar" alt="Dr. Diaz" src="https://i.pravatar.cc/112?img=20">
+            <div class="meta">
+              <h3>Dr. Casey Diaz, MD</h3>
+              <div class="tags">
+                <span class="tag">Pediatrics</span>
+                <span class="tag">In‑network</span>
+              </div>
+              <small>Next availability: Fri • 8:30 AM – 12:30 PM</small>
+            </div>
+            <div class="actions-right">
+              <button class="btn primary" onclick="applyForCare('Dr. Casey Diaz')">Apply for Care</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="doctor-card">
+            <img class="avatar" alt="Dr. Ellis" src="https://i.pravatar.cc/112?img=25">
+            <div class="meta">
+              <h3>Dr. Taylor Ellis, PA-C</h3>
+              <div class="tags">
+                <span class="tag">Dermatology</span>
+                <span class="tag">New patients</span>
+              </div>
+              <small>Next availability: Mon • 1:00 PM – 4:30 PM</small>
+            </div>
+            <div class="actions-right">
+              <button class="btn primary" onclick="applyForCare('Dr. Taylor Ellis')">Apply for Care</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="doctor-card">
+            <img class="avatar" alt="Dr. Flores" src="https://i.pravatar.cc/112?img=30">
+            <div class="meta">
+              <h3>Dr. Jamie Flores, MD</h3>
+              <div class="tags">
+                <span class="tag">Cardiology</span>
+                <span class="tag">Tele-visit</span>
+              </div>
+              <small>Next availability: Wed • 11:00 AM – 3:00 PM</small>
+            </div>
+            <div class="actions-right">
+              <button class="btn primary" onclick="applyForCare('Dr. Jamie Flores')">Apply for Care</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
+

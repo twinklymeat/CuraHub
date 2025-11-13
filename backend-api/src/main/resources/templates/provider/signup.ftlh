@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" type="text/css" href="/css/signup.css">
+</head>
+<body>
+    <div class="signup-box">
+        <div class="infodiv">
+            First Name:
+            <br>
+            <input type="text" class="input-field" placeholder="">
+        </div>
+        <div class="infodiv">
+            Last Name:
+            <br>
+            <input type="text" class="input-field" placeholder="">
+        </div>
+        <div class="infodiv">
+            Email:
+            <br>
+            <input type="email" class="input-field">
+        </div>
+        <div class="infodiv">
+            DOB:
+            <br>
+            <input type="date" class="input-field">
+        </div>
+        <div class="infodiv">
+            About Me (optional):
+            <br>
+            <textarea rows="3" class="input-field" style="font-size: 20px; margin-bottom: -10px;"></textarea>
+        </div>
+        <div class="infodiv" style="margin-bottom: 15px;">
+            Gender:
+            <br>
+            <select class="input-field">
+                <option value="male">male</option>
+                <option value="female">female</option>
+                <option value="other">other</option>
+            </select>
+        </div>
+        <div class="infodiv">
+            <a href="editInfo.html">
+                <button class="enter-button">Submit</button>
+            </a>
+        </div>
+    </div>
+</body>
