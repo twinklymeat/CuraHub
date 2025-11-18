@@ -16,7 +16,7 @@ import com.curahub.curahub.doctor.Doctor;
 import com.curahub.curahub.user.User;
 
 @Entity
-@Table(name="appointments")
+@Table(name = "appointments")
 public class Appointments {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,27 +26,32 @@ public class Appointments {
     private LocalDateTime time;
 
     @ManyToOne
-    @JoinColumn(name="doctor_id")
+    @JoinColumn(name = "doctor_id")
     private Doctor doctor;
 
     @ManyToOne
-    @JoinColumn(name="user_id")
+    @JoinColumn(name = "user_id")
     private User user;
+
+    @Column()
+    private String notes = "unspecified";
 
     public Appointments() {
     }
 
-    public Appointments(long id, LocalDateTime time, Doctor doctor, User user) {
+    public Appointments(long id, LocalDateTime time, Doctor doctor, User user, String notes) {
         this.id = id;
         this.time = time;
         this.doctor = doctor;
         this.user = user;
+        this.notes = notes;
     }
 
-    public Appointments(LocalDateTime time, Doctor doctor, User user) {
+    public Appointments(LocalDateTime time, Doctor doctor, User user, String notes) {
         this.time = time;
         this.doctor = doctor;
         this.user = user;
+        this.notes = notes;
     }
 
     public long getID() {
@@ -79,5 +84,13 @@ public class Appointments {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 }

@@ -15,12 +15,12 @@ img {
 .mainbox {
     background-color: #f1f1f1;
     width: 70%;
-    height:auto;
+    height: auto;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    box-shadow: inset -2px -2px 0px #a1a1a1;
+    box-shadow: 0px 0px 5px #818181;
     border-radius: 10px;
     padding-left: 5%;
     padding-right: 5%;
@@ -29,12 +29,13 @@ img {
 }
 
 .profilebox {
-    
+
     background-color: #dddddd;
-    height:auto;
+    height: auto;
     display: flex;
     min-height: 120px;
     width: 100%;
+    box-shadow: 0px 0px 5px #818181;
     /* margin-left: 5%; */
     /* margin-right: 5%; */
     /* margin-top: 20px; */
@@ -52,7 +53,7 @@ img {
     padding-top: 10px;
     width: calc(100% - 300px);
     float: left;
-    height:auto;
+    height: auto;
 }
 
 .profile-expertise {
@@ -71,13 +72,47 @@ img {
 
 .appointment {
     float: left;
-    width: 40%;
-    height:120px;
+    width: calc(50% - 100px);
+    min-height: 120px;
+    margin-top: 20px;
+    padding: 20px;
+    box-shadow: 0px 0px 5px #818181;
+    flex: auto;
+    /* height: 120px; */
     background-color: #dddddd;
-    margin-right:5%;
-    margin-left: 5%;
+    margin-right: 30px;
+    margin-left: 30px;
     /* display: inline-block; */
     border-radius: 10px;
+    animation-name: apptHoverAniOUT;
+    animation-duration: 0.5s;
+}
+
+@keyframes apptHoverAniIN {
+    from {
+        translate: 0px 0px;
+
+    }
+
+    to {
+        translate: 0px -10px;
+    }
+}
+
+@keyframes apptHoverAniOUT {
+    from {
+        translate: 0px -10px;
+    }
+
+    to {
+        translate: 0px 0px;
+    }
+}
+
+.appointment:hover {
+    animation-name: apptHoverAniIN;
+    animation-duration: 0.5s;
+    translate: 0px -10px;
 }
 
 .appointment-img {
@@ -85,12 +120,12 @@ img {
 }
 
 .appointment-info {
-    width:calc(100%-120px);
+    width: calc(100%-120px);
     height: fit-content;
     padding-top: 20px;
     padding-right: 20px;
     justify-content: center;
-    
+
 }
 
 name {
@@ -106,12 +141,12 @@ name {
     float: right;
     margin-right: 20px;
     height: 36px;
-    width:80px;
+    width: 80px;
     margin-left: 40px;
     margin-top: calc(100% - 50% - 24px);
     font-size: 20px;
-    background-color: #5286ff;
-    border:none;
+    background-color: royalblue;
+    border: none;
     border-radius: 5px;
     color: #f1f1f1;
     cursor: pointer;

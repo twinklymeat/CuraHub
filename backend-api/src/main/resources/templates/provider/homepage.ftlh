@@ -1,45 +1,53 @@
 <!DOCTYPE html>
+
 <head>
     <link rel="stylesheet" type="text/css" href="/css/homepage.css">
 </head>
+
 <body>
     <div class="mainbox">
         <div class="profilebox">
-            <img src="doctorpfp.png" style="float: left;">
+            <!-- <img src="doctorpfp.png" style="float: left;"> -->
             <div class="profile-info">
-                Dr. Prototype
+                Dr. ${doctor.user.lastName}, ${doctor.user.firstName}
                 <div class="profile-expertise">
-                    Field: Inatoring; Available 7:00 - 12:00 AM all weekdays
+                    Description: ${doctor.description};
                     <br>
-                    Office: The building that looks like Ferb's head
+                    Availability:
+                    <#list availability as av>
+                        <br>
+                        ${av.day} ${av.startTime} - ${av.endTime}; ${av.length}
+                    </#list>
+                    <br>
+                    <!-- Office: The building that looks like Ferb's head -->
                 </div>
             </div>
             <div>
                 <a href="editInfo.html"><button class="editButton">Edit</button></a>
             </div>
         </div>
-        <p style="font-size: 20px;"> 
-            Scheduled Appointments: 
+        <p style="font-size: 20px;">
+            Scheduled Appointments:
         </p>
         <div class="schedule">
 
-            <div class="appointment">
-                <img src="platypus.png" class="appointment-img"> 
-                <div class="appointment-info">
-                    <name>
-                        A Platypus?
-                    </name>
-                    <br>09/18/25 9:30 AM<br>
-                    <div class="reason">
-                        Reason: <br>
-                        He's just a platypus he doesnt do much
+            <#list appointments as ap>
+                <div class="appointment">
+                    <div class="appointment-info">
+                        <name>
+                            ${ap.user.name}
+                        </name>
+                        <br>${ap.time}<br>
+                        <div class="reason">
+                            ${ap.notes}
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="appointment">
-                <img src="perry-the-platypus.png" class="appointment-img"> 
+            </#list>
+            <!-- <div class="appointment">
+                <img src="perry-the-platypus.png" class="appointment-img">
                 <div class="appointment-info">
-                     <name>
+                    <name>
                         Perry The Platypus?!?!
                     </name>
                     <br>09/18/25 10:00 AM<br>
@@ -48,26 +56,9 @@
                         To defeat evil
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
-        <p style="font-size: 20px;"> 
-            Unscheduled Appointments: 
-        </p>
-        <div class="schedule">
 
-            <div class="appointment">
-                <img src="peter.png" class="appointment-img"> 
-                <div class="appointment-info">
-                    <name>
-                        Peter the Panda
-                    </name>
-                    <div class="reason">
-                        Reason: <br>
-                        Rematch
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
 </body>

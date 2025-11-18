@@ -1,5 +1,7 @@
 package com.curahub.curahub.doctor;
 
+import java.util.List;
+
 // import java.io.IOException;
 
 // import java.io.File;
@@ -20,16 +22,24 @@ public class DoctorService {
         return doctorRepository.findAll();
     }
 
-    public Object getDoctorByID(@PathVariable long id) {
+    public Doctor getDoctorByID(@PathVariable long id) {
         return doctorRepository.getDoctorById(id);
     }
 
+    public Object getAvailabilities(long id) {
+        return doctorRepository.getAvailabilitiesByDoctor(id);
+    }
+
     // public Object getDoctorByDescription(String description) {
-    //     return doctorRepository.getDoctorsByDescription(description);
+    // return doctorRepository.getDoctorsByDescription(description);
     // }
 
-    public Object getDoctorByName(String name){
-        return doctorRepository.getByuser_Name(name);
+    public Object getAppointments(long id) {
+        return doctorRepository.getAppointments(id);
+    }
+
+    public Object getDoctorByName(String name) {
+        return doctorRepository.getDoctorByName(name);
     }
 
     public Doctor addDoctor(Doctor doctor) {
@@ -38,6 +48,11 @@ public class DoctorService {
 
     public void deleteDoctor(long id) {
         doctorRepository.deleteById(id);
+    }
+
+    public Doctor loginAsDoctors(String email, String password) {
+
+        return doctorRepository.loginAsDoctor(email, password);
     }
 
 }

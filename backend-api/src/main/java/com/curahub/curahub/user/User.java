@@ -28,32 +28,35 @@ public class User {
     @Column(unique = true, nullable = false)
     private String email;
 
-
     @Column(nullable = false)
     private String phone;
-    
+
     @Column
     private String name;
+
+    private String password;
 
     public User() {
 
     }
 
-    public User(long id, String firstName, String lastName, String email, String phone) {
+    public User(long id, String firstName, String lastName, String email, String phone, String password) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phone = phone;
         this.name = firstName + " " + lastName;
+        this.password = password;
     }
 
-    public User(String firstName, String lastName, String email, String phone) {
+    public User(String firstName, String lastName, String email, String phone, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phone = phone;
         this.name = firstName + " " + lastName;
+        this.password = password;
     }
 
     public long getID() {
@@ -69,15 +72,25 @@ public class User {
     }
 
     public String getName() {
-        return firstName + " " + lastName;
+        return name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public void setFirstName(String name) {
         this.firstName = name;
+        setName();
     }
 
     public void setLastName(String name) {
         this.lastName = name;
+        setName();
     }
 
     public String getEmail() {
@@ -94,5 +107,9 @@ public class User {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public void setName() {
+        this.name = firstName + " " + lastName;
     }
 }
