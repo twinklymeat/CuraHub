@@ -13,6 +13,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.service.annotation.HttpExchange;
 
+import com.fasterxml.jackson.annotation.JsonCreator.Mode;
+
 import org.springframework.ui.Model;
 
 import org.springframework.stereotype.Controller;
@@ -34,6 +36,7 @@ public class DoctorController {
         model.addAttribute("availability", doctorService.getAvailabilities(id));
         model.addAttribute("appointments", doctorService.getAppointments(id));
         model.addAttribute("title", "Doctor Dashboard");
+        model.addAttribute("id", id);
         return "provider/homepage";
     }
 
@@ -94,4 +97,16 @@ public class DoctorController {
         return doctorService.getAllDoctors();
     }
 
+    @GetMapping("/doctor/edit/{id}")
+    public Object editDoctor(Model model, @PathVariable long id) {
+        model.addAttribute("doctor", doctorService.getDoctorByID(id).getUser());
+        model.addAttribute("user",doctorService.getDoctorByID(id).getUser().getID());
+        return "provider/editInfo";
+    }
+
+    @GetMapping("/doctor/updated/{id}")
+    public Object updatedScreen(Model model, @PathVariable long id) {
+        Doctor doc = doctorService.getDoctorByUserID(id);
+        return "redirect:/doctor/dashboard/" + doc.getID();
+    }
 }

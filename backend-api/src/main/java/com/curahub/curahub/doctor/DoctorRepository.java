@@ -46,5 +46,9 @@ public interface DoctorRepository extends JpaRepository<Doctor, Long> {
     // %?1%)")
     List<Doctor> getByuser_Name(@Param("name") String name);
 
+
+    @Query(value = "SELECT d.*, u.id AS user_id, u.email, u.first_name, u.last_name, u.name, u.password, u.phone FROM doctor d JOIN base_user u ON d.doctor_user = u.id WHERE u.id = :id", nativeQuery = true)
+    Doctor getBydoctorUser(@Param("id") long id);
+
     // I wanna kms T_T
 }

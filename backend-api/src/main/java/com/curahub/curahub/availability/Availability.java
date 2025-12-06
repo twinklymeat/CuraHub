@@ -10,7 +10,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Table;
 import jakarta.persistence.ManyToOne;
 
-import java.sql.Time;
+// import java.sql.Time;
 //import java.time.LocalDateTime;
 // import java.util.Date;
 

@@ -25,7 +25,7 @@ public class User {
 
     @Email
     @NotBlank
-    @Column(unique = true, nullable = false)
+    @Column(nullable = false)
     private String email;
 
     @Column(nullable = false)
@@ -111,5 +111,9 @@ public class User {
 
     public void setName() {
         this.name = firstName + " " + lastName;
+    }
+
+    public void setID(long id) {
+        this.id = id;
     }
 }

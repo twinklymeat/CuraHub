@@ -1,6 +1,6 @@
 package com.curahub.curahub.doctor;
 
-import java.util.List;
+// import java.util.List;
 
 // import java.io.IOException;
 
@@ -24,6 +24,10 @@ public class DoctorService {
 
     public Doctor getDoctorByID(@PathVariable long id) {
         return doctorRepository.getDoctorById(id);
+    }
+
+    public Doctor getDoctorByUserID(long id) {
+        return doctorRepository.getBydoctorUser(id);
     }
 
     public Object getAvailabilities(long id) {

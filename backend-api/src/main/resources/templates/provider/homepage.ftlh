@@ -23,9 +23,12 @@
                 </div>
             </div>
             <div>
-                <a href="editInfo.html"><button class="editButton">Edit</button></a>
+                <a href="/doctor/edit/${id}"><button class="editButton">Edit</button></a>
             </div>
-        </div>
+            <div>
+                <a><button class="editButton" style="float:left; height: 50px;">Edit Desc.</button></a>
+            </div>
+            </div>
         <p style="font-size: 20px;">
             Scheduled Appointments:
         </p>

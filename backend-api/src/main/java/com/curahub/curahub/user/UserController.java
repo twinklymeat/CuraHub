@@ -4,6 +4,11 @@ package com.curahub.curahub.user;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import com.curahub.curahub.doctor.DoctorController;
+import com.curahub.curahub.doctor.DoctorRepository;
+import com.curahub.curahub.doctor.DoctorService;
+
 import org.springframework.stereotype.Controller;
 
 @Controller
@@ -28,9 +33,17 @@ public class UserController {
         return "redirect:/doctor/signup1/" + newUser.getID();
     }
 
-    @PostMapping(consumes = "application/x-www-form-urlencoded")
-    public ResponseEntity<Object> addUser(User user) {
-        return ResponseEntity.ok(userService.addUser(user));
+    // @PostMapping(consumes = "application/x-www-form-urlencoded")
+    // public ResponseEntity<Object> addUser(User user) {
+    //     return ResponseEntity.ok(userService.addUser(user));
+    // }
+
+    @PostMapping(path = "/doctors/update/{id}", consumes = "application/x-www-form-urlencoded")
+    public Object updateDoctor(User user,@PathVariable long id) {
+        userService.updateUser(id, user);
+        User a = user;
+        userService.addUser(a);
+        return "redirect:/doctor/updated/" + id;
     }
 
     @DeleteMapping("/{id}")

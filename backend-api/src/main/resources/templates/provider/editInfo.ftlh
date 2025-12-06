@@ -1,23 +1,26 @@
 <!DOCTYPE html>
+<html>
 <head>
     <link rel="stylesheet" type="text/css" href="/css/editInfo.css">
 </head>
+
 <body>
     <div class="success-box">
-        <img src="doctorpfp.png" class="profile-picture">
+
         <div class="text-div">
-            <input type="file" class="input-box">
-            Field: <br>
-            <input type="text" value="Inatoring" class="input-box">
-            <br>Availabitily:<br>
-            <input type="text" value="7:00 - 12:00 AM all weekdays" class="input-box">
-            <br>Office Address<br>
-            <input type="text" value="The building that looks like Ferb's head" class="input-box">
+            <form id="edit-doctor" method="post" action="/api/users/doctors/update/${user}" enctype="form-data"> 
+                <input type="number" id="ID" name="ID" value=${user} style="display: none;">
+                <input type="text" id="firstName" name="firstName" value=${doctor.firstName} class="input-box">
+                <input type="text" id="lastName" name="lastName" value=${doctor.lastName} class="input-box">
+                <input type="email" id="email" name="email" value=${doctor.email} class="input-box">
+                <input type="text" id="phone" name="phone" value=${doctor.phone} class="input-box">
+                <input type="password" id="password" name="password" placeholder="password" value=${doctor.password} class="input-box">
+                <button type="submit" class="continuebutton">
+                    Save
+                </button>
+            </form>
         </div>
-        <a href="homepage.html">
-        <button class="continuebutton">
-            Save
-        </button>
-        </a>
     </div>
 </body>
+
+</html>
