@@ -40,10 +40,25 @@ public class AvailabilityController {
         return ResponseEntity.ok(availabilityService.addAvailability(availability));
     }
 
+    @PostMapping("/add")
+    public Object addAvailabilityNoJson(Availability availability) {
+        availabilityService.addAvailability(availability);
+        return "redirect:/doctor/dashboard/" + availability.getDoctor().getID();
+    }
+
     @DeleteMapping("/{id}")
     public Object deleteAvailability(@PathVariable long id) {
         availabilityService.deleteAvailabilityByID(id);
         return availabilityService.getAllAvailability();
+    }
+
+    @GetMapping("/delete/{id}")
+    public Object deleteAvailabilityByPost(@PathVariable long id) {
+        Availability av = availabilityService.getAvailabilityByID(id);
+        long ID = av.getDoctor().getID();
+        availabilityService.deleteAvailabilityByID(id);
+
+        return "redirect:/doctor/dashboard/" + ID;
     }
 
 }

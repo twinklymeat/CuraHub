@@ -15,10 +15,18 @@
                     <br>
                     Availability:
                     <#list availability as av>
-                        <br>
-                        ${av.day} ${av.startTime} - ${av.endTime}; ${av.length}
+                            <br>
+                            ${av.day} ${av.startTime} - ${av.endTime}; ${av.length}
+                            <!-- <form action="/api/availability/delete/${av.ID}" method="post"> -->
+                            <a href="/api/availability/delete/${av.ID}">
+                                <button type="submit" style="inline-size: auto; height: auto; font-size: inherit; border: none; background-color: royalblue; border-radius: 5px; color:#f1f1f1; cursor: pointer;">delete</button>
+                            </a>
+                            <!-- </form> -->
                     </#list>
                     <br>
+                    <a href="/doctor/add-availability/${id}">
+                        <button style="inline-size: auto; height: auto; font-size: inherit; border: none; background-color: royalblue; border-radius: 5px; color:#f1f1f1; cursor: pointer;;">Add Availability</button>
+                    </a>
                     <!-- Office: The building that looks like Ferb's head -->
                 </div>
             </div>
@@ -26,9 +34,9 @@
                 <a href="/doctor/edit/${id}"><button class="editButton">Edit</button></a>
             </div>
             <div>
-                <a><button class="editButton" style="float:left; height: 50px;">Edit Desc.</button></a>
+                <a href="/doctor/edit/description/${id}"><button class="editButton" style="float:left; height: 50px;">Edit Desc.</button></a>
             </div>
-            </div>
+        </div>
         <p style="font-size: 20px;">
             Scheduled Appointments:
         </p>

@@ -40,6 +40,12 @@ public class DoctorController {
         return "provider/homepage";
     }
 
+    @GetMapping("/doctor/add-availability/{id}")
+    public Object addAvailability(Model model, @PathVariable long id) {
+        model.addAttribute("doctorID", id);
+        return "provider/availability";
+    }
+
     @GetMapping("/doctor/login")
     public Object getLoginPage(Model model) {
         return "provider/login";
@@ -89,6 +95,13 @@ public class DoctorController {
     public Object doctorSignup2(Model model, @PathVariable long id) {
         model.addAttribute("userID", id);
         return "provider/signupP2";
+    }
+
+    @GetMapping("/doctor/edit/description/{id}")
+    public Object doctorEditDesc(Model model, @PathVariable long id) {
+        model.addAttribute("doctorID", id);
+        model.addAttribute("userID", doctorService.getDoctorByID(id).getUser().getID());
+        return "provider/editDesc";
     }
 
     @DeleteMapping("/api/doctors/{id}")
