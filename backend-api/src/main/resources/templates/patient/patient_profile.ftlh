@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CuraHub — Patient Profile</title>
+<link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<div class="wrap">
+  <a class="btn secondary" href="./dashboard_patient.html">← Back to Dashboard</a>
+  <div class="card" style="margin-top:12px">
+    <h1 class="title">Your Profile</h1>
+    <p class="subtitle">Static profile form for prototype.</p>
+    <form onsubmit="event.preventDefault(); alert('Demo only');">
+      <label>Full Name</label>
+      <input value="Jane Doe">
+      <div class="row">
+        <div>
+          <label>Email</label>
+          <input type="email" value="jane@example.com">
+        </div>
+        <div>
+          <label>Phone</label>
+          <input type="tel" value="(555) 555-5555">
+        </div>
+      </div>
+      <label>Date of Birth</label>
+      <input type="date" value="1992-05-21">
+      <label>Primary Care Physician</label>
+      <input value="Dr. Emily Carter">
+      <div class="actions" style="display:flex;gap:10px;margin-top:12px">
+        <button class="btn primary" type="submit">Save Changes</button>
+        <a class="btn secondary" href="./dashboard_patient.html">Cancel</a>
+      </div>
+      <small class="muted" style="display:block;margin-top:8px">Static demo data</small>
+    </form>
+  </div>
+</div>
+</body>
+</html>
+
+

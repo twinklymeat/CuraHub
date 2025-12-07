@@ -25,18 +25,18 @@ public class Doctor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    
+
     @OneToOne
-    @JoinColumn(name="doctor_user", nullable = false)
+    @JoinColumn(name = "doctor_user", nullable = false)
     private User user;
-    
+
     @Column(nullable = false)
     private String description;
 
     public Doctor() {
-        
+
     }
-    
+
     public Doctor(long id, User doctor, String description) {
         this.id = id;
         this.user = doctor;
@@ -64,4 +64,7 @@ public class Doctor {
         this.description = desc;
     }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

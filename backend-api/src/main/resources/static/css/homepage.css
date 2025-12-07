@@ -1,0 +1,178 @@
+body {
+    background-color: #dddddd;
+}
+
+img {
+    height: 100px;
+    margin: 10px;
+    border: 3px solid #a1a1a1;
+    width: auto;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    margin-right: 20px;
+}
+
+.mainbox {
+    background-color: #f1f1f1;
+    width: 70%;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    transform: translate(-50%, -50%);
+    box-shadow: 0px 0px 5px #818181;
+    border-radius: 10px;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.returnButton {
+    background-color: royalblue;
+    width: fit-content;
+    margin: 20px;
+    padding: 5px;
+    height: 20px;
+
+}
+
+.profilebox {
+
+    background-color: #dddddd;
+    height: auto;
+    display: flex;
+    min-height: 120px;
+    width: 100%;
+    box-shadow: 0px 0px 5px #818181;
+    /* margin-left: 5%; */
+    /* margin-right: 5%; */
+    /* margin-top: 20px; */
+    margin-bottom: 20px;
+    border-radius: 10px;
+    object-fit: contain;
+    padding: 10px;
+
+}
+
+.profile-info {
+    color: #515151;
+    font-size: 30px;
+    float: left;
+    padding-top: 10px;
+    width: calc(100%);
+    float: left;
+    height: auto;
+}
+
+.profile-expertise {
+    font-size: 20px;
+    margin-left: 30px;
+    margin-top: 15px;
+    width: 100%;
+    height: auto;
+}
+
+.schedule {
+    height: fit-content;
+    width: 100%;
+    display: inline-block;
+}
+
+.appointment {
+    float: left;
+    width: calc(50% - 100px);
+    min-height: 120px;
+    margin-top: 20px;
+    padding: 20px;
+    box-shadow: 0px 0px 5px #818181;
+    flex: auto;
+    /* height: 120px; */
+    background-color: #dddddd;
+    margin-right: 30px;
+    margin-left: 30px;
+    /* display: inline-block; */
+    border-radius: 10px;
+    animation-name: apptHoverAniOUT;
+    animation-duration: 0.5s;
+}
+
+@keyframes apptHoverAniIN {
+    from {
+        translate: 0px 0px;
+
+    }
+
+    to {
+        translate: 0px -10px;
+    }
+}
+
+@keyframes apptHoverAniOUT {
+    from {
+        translate: 0px -10px;
+    }
+
+    to {
+        translate: 0px 0px;
+    }
+}
+
+.appointment:hover {
+    animation-name: apptHoverAniIN;
+    animation-duration: 0.5s;
+    translate: 0px -10px;
+}
+
+.appointment-img {
+    float: left;
+}
+
+.appointment-info {
+    width: calc(100%-120px);
+    height: fit-content;
+    padding-top: 20px;
+    padding-right: 20px;
+    justify-content: center;
+
+}
+
+name {
+    font-size: 20px;
+
+}
+
+.reason {
+    margin-left: 10px;
+}
+
+.editButton {
+    float:none;
+    margin-right: 20px;
+    height: 50px;
+    width: 80px;
+    margin-left: 0px;
+    margin-top: 0px;
+    font-size: 20px;
+    background-color: royalblue;
+    border: none;
+    border-radius: 5px;
+    color: #f1f1f1;
+    cursor: pointer;
+    
+}
+
+.availability {
+    background-color: #cccccc;
+    width: max-content;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px #818181;
+    margin-top: 10px;
+}
+
+.shadow {
+    box-shadow: 0px 0px 5px #818181;
+}
