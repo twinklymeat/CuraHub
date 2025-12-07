@@ -62,7 +62,8 @@ public class UserController {
     public Object viewPatient(Model model, @PathVariable long id, @RequestParam long drID) {
         model.addAttribute("user", userService.getUserByID(id));
         model.addAttribute("doctorID", drID);
-        model.addAttribute("appointments", userService.getAppointmentsByUser(id));
+        model.addAttribute("appointments", userService.getUpcomingAppointments(id));
+        model.addAttribute("pastAppts", userService.getPastAppointments(id));
         return "provider/patientProfile";
     }
 
