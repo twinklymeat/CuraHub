@@ -37,9 +37,5 @@
                     <option value="other">other</option>
                 </select>
             </div> -->
-    <div class="infodiv">
-        <button class="enter-button" type="submit">Submit</button>
-    </div>
-    </form>
     </div>
 </body>

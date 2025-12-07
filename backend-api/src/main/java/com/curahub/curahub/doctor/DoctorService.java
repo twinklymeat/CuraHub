@@ -1,5 +1,8 @@
 package com.curahub.curahub.doctor;
 
+import java.util.Comparator;
+import java.util.List;
+
 // import java.util.List;
 
 // import java.io.IOException;
@@ -10,6 +13,8 @@ package com.curahub.curahub.doctor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
+
+import com.curahub.curahub.appointments.Appointments;
 
 // import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -42,6 +47,34 @@ public class DoctorService {
         return doctorRepository.getAppointments(id);
     }
 
+    public List<Appointments> getUpcomingAppointments(long id) {
+        List<Appointments> appts = doctorRepository.getAppointments(id);
+        List<Appointments> newAppts = doctorRepository.getAppointments(id);
+        int offset = 0;
+        for (int i = 0; i < appts.size(); i++) {
+            if (appts.get(i).getCompleted() == false) {
+                newAppts.remove(i - offset);
+                offset += 1;
+            }
+        };
+        newAppts.sort(Comparator.comparing(Appointments::getTime));
+        return newAppts;
+    }
+
+    public List<Appointments> getPastAppointments(long id) {
+        List<Appointments> appts = doctorRepository.getAppointments(id);
+        List<Appointments> newAppts = doctorRepository.getAppointments(id);
+        int offset = 0;
+        for (int i = 0; i < appts.size(); i++) {
+            if (appts.get(i).getCompleted() == true) {
+                newAppts.remove(i - offset);
+                offset += 1;
+            }
+        };
+        newAppts.sort(Comparator.comparing(Appointments::getTime).reversed());
+        return newAppts;
+    }
+    
     public Object getDoctorByName(String name) {
         return doctorRepository.getDoctorByName(name);
     }
@@ -53,6 +86,7 @@ public class DoctorService {
     public void deleteDoctor(long id) {
         doctorRepository.deleteById(id);
     }
+
 
     public Doctor loginAsDoctors(String email, String password) {
 

@@ -32,4 +32,7 @@ public class UserService {
         return userRepository.save(user);
     }
 
-}
+    public Object getAppointmentsByUser(long id) {
+        return userRepository.getAppointmentsByUser(id);
+    }
+}   

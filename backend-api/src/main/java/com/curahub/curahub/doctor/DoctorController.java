@@ -34,7 +34,8 @@ public class DoctorController {
     public Object getDashboard(Model model, @PathVariable long id) {
         model.addAttribute("doctor", doctorService.getDoctorByID(id));
         model.addAttribute("availability", doctorService.getAvailabilities(id));
-        model.addAttribute("appointments", doctorService.getAppointments(id));
+        model.addAttribute("appointments", doctorService.getUpcomingAppointments(id));
+        model.addAttribute("pastAppt", doctorService.getPastAppointments(id));
         model.addAttribute("title", "Doctor Dashboard");
         model.addAttribute("id", id);
         return "provider/homepage";
@@ -101,6 +102,7 @@ public class DoctorController {
     public Object doctorEditDesc(Model model, @PathVariable long id) {
         model.addAttribute("doctorID", id);
         model.addAttribute("userID", doctorService.getDoctorByID(id).getUser().getID());
+        model.addAttribute("dr", doctorService.getDoctorByID(id));
         return "provider/editDesc";
     }
 
@@ -122,4 +124,8 @@ public class DoctorController {
         Doctor doc = doctorService.getDoctorByUserID(id);
         return "redirect:/doctor/dashboard/" + doc.getID();
     }
+
+
 }
+
+

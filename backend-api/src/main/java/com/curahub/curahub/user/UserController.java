@@ -10,9 +10,10 @@ import com.curahub.curahub.doctor.DoctorRepository;
 import com.curahub.curahub.doctor.DoctorService;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 
 @Controller
-@RequestMapping("/api/users")
+@RequestMapping
 public class UserController {
     @Autowired
     private UserService userService;
@@ -22,12 +23,12 @@ public class UserController {
         return ResponseEntity.ok(userService.getAllUsers());
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/api/users/{id}")
     public ResponseEntity<Object> getUserByID(@PathVariable long id) {
         return ResponseEntity.ok(userService.getUserByID(id));
     }
 
-    @PostMapping(path = "/doctors", consumes = "application/x-www-form-urlencoded")
+    @PostMapping(path = "/api/users/doctors", consumes = "application/x-www-form-urlencoded")
     public Object addDoctor(User user) {
         User newUser = userService.addUser(user);
         return "redirect:/doctor/signup1/" + newUser.getID();
@@ -38,7 +39,7 @@ public class UserController {
     //     return ResponseEntity.ok(userService.addUser(user));
     // }
 
-    @PostMapping(path = "/doctors/update/{id}", consumes = "application/x-www-form-urlencoded")
+    @PostMapping(path = "/api/users/doctors/update/{id}", consumes = "application/x-www-form-urlencoded")
     public Object updateDoctor(User user,@PathVariable long id) {
         userService.updateUser(id, user);
         User a = user;
@@ -46,14 +47,23 @@ public class UserController {
         return "redirect:/doctor/updated/" + id;
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/api/users/{id}")
     public ResponseEntity<Object> deleteUser(@PathVariable long id) {
         userService.deleteUser(id);
         return ResponseEntity.ok(userService.getAllUsers());
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/api/users/{id}")
     public ResponseEntity<Object> updateUser(@PathVariable long id, @RequestBody User user) {
         return ResponseEntity.ok(userService.updateUser(id, user));
     }
+
+    @GetMapping("/doctor/patient/{id}")
+    public Object viewPatient(Model model, @PathVariable long id, @RequestParam long drID) {
+        model.addAttribute("user", userService.getUserByID(id));
+        model.addAttribute("doctorID", drID);
+        model.addAttribute("appointments", userService.getAppointmentsByUser(id));
+        return "provider/patientProfile";
+    }
+
 }

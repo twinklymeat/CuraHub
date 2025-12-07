@@ -10,7 +10,14 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 // import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+
+import java.sql.Date;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.TimeZone;
+
+import org.springframework.util.StringUtils;
 
 import com.curahub.curahub.doctor.Doctor;
 import com.curahub.curahub.user.User;
@@ -92,5 +99,32 @@ public class Appointments {
 
     public void setNotes(String notes) {
         this.notes = notes;
+    }
+
+    public String getDay() {
+        String day = time.getDayOfWeek().toString().toLowerCase();
+        day = StringUtils.capitalize(day);
+        return day; 
+    }
+
+    public String getDate() {
+        String day = time.getDayOfWeek().toString().toLowerCase();
+        day = StringUtils.capitalize(day);
+        String month = time.getMonth().toString().toLowerCase();
+        month = StringUtils.capitalize(month);
+        int date = time.getDayOfMonth();
+        int year = time.getYear();
+        String minute = time.format(DateTimeFormatter.ofPattern("MMM dd yyyy, hh:mm a"));
+        return minute;
+        // return String.format("%s, %s %s, %s; %s:%s", day, month, date, year, time.getHour(), time.getMinute());
+    }
+
+    public Boolean getCompleted() {
+        if (time.isBefore(LocalDateTime.now())) {
+            return false;
+        }
+        else {
+            return true;
+        }
     }
 }

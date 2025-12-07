@@ -13,63 +13,87 @@
                 <div class="profile-expertise">
                     Description: ${doctor.description};
                     <br>
-                    Availability:
-                    <#list availability as av>
-                            <br>
-                            ${av.day} ${av.startTime} - ${av.endTime}; ${av.length}
-                            <!-- <form action="/api/availability/delete/${av.ID}" method="post"> -->
-                            <a href="/api/availability/delete/${av.ID}">
-                                <button type="submit" style="inline-size: auto; height: auto; font-size: inherit; border: none; background-color: royalblue; border-radius: 5px; color:#f1f1f1; cursor: pointer;">delete</button>
-                            </a>
-                            <!-- </form> -->
-                    </#list>
+                    Contact: ${doctor.user.email}, ${doctor.user.phone}
                     <br>
-                    <a href="/doctor/add-availability/${id}">
-                        <button style="inline-size: auto; height: auto; font-size: inherit; border: none; background-color: royalblue; border-radius: 5px; color:#f1f1f1; cursor: pointer;;">Add Availability</button>
-                    </a>
+                    <div class="availability">
+                        <a href="/doctor/add-availability/${id}">
+                            <button class="shadow" style="height: auto; font-size: inherit; border: none; background-color: green; border-radius: 5px; color:#f1f1f1; cursor: pointer; float: right;">+</button>
+                        </a>
+                        Availability:
+                        <#list availability as av>
+                                <div style="margin: 5px; padding: 0px; height: min-content;">
+                                    ${av.day} ${av.startTime} - ${av.endTime}; ${av.length}
+                                    <!-- <form action="/api/availability/delete/${av.ID}" method="post"> -->
+                                    <a href="/api/availability/delete/${av.ID}">
+                                        <button type="submit" class="shadow" style="inline-size: auto; height: auto; font-size: inherit; border: none; background-color:firebrick; border-radius: 5px; color:#f1f1f1; cursor: pointer; float: right;margin-left: 5px;">X</button>
+                                    </a>
+                                    <a href="/doctor/availability?avID=${av.ID}">
+                                        <button type="submit" class="shadow" style="inline-size: auto; height: auto; font-size: inherit; border: none; background-color:darkblue; border-radius: 5px; color:#f1f1f1; cursor: pointer; float: right;margin-left: 20px;">🔧</button>
+                                    </a>
+                                    <!-- </form> -->
+                                </div>
+                        </#list>
+                    </div>
+                    <br>
                     <!-- Office: The building that looks like Ferb's head -->
                 </div>
             </div>
+        </div>
+        <div>
             <div>
-                <a href="/doctor/edit/${id}"><button class="editButton">Edit</button></a>
+                <a href="/doctor/edit/${id}"><button class="editButton shadow" style="float: left;">Edit Info</button></a>
             </div>
             <div>
-                <a href="/doctor/edit/description/${id}"><button class="editButton" style="float:left; height: 50px;">Edit Desc.</button></a>
+                <a href="/doctor/edit/description/${id}"><button class="shadow editButton">Edit Desc.</button></a>
             </div>
         </div>
-        <p style="font-size: 20px;">
-            Scheduled Appointments:
-        </p>
-        <div class="schedule">
+        <div>
+            <p style="font-size: 20px;">
+                Scheduled Appointments:
+            </p>
+            <div class="schedule">
 
-            <#list appointments as ap>
-                <div class="appointment">
-                    <div class="appointment-info">
-                        <name>
-                            ${ap.user.name}
-                        </name>
-                        <br>${ap.time}<br>
-                        <div class="reason">
-                            ${ap.notes}
+                <#list appointments as ap>
+                    <div class="appointment">
+                        <div class="appointment-info">
+                            <name>
+                                ${ap.user.name} 
+                                <a href="/doctor/patient/${ap.user.ID}?drID=${doctor.ID}">
+                                    <button class="editButton" style="height: 36px; float: right;">View</button>
+                                </a>
+                            </name>
+                            <br>${ap.date}<br>
+                            <div class="reason">
+                                ${ap.notes}
+                            </div>
                         </div>
                     </div>
-                </div>
-            </#list>
-            <!-- <div class="appointment">
-                <img src="perry-the-platypus.png" class="appointment-img">
-                <div class="appointment-info">
-                    <name>
-                        Perry The Platypus?!?!
-                    </name>
-                    <br>09/18/25 10:00 AM<br>
-                    <div class="reason">
-                        Reason: <br>
-                        To defeat evil
-                    </div>
-                </div>
-            </div> -->
-        </div>
+                </#list>
+                
+            </div>
 
+            <p style="font-size: 20px;">
+                Past Appointments:
+            </p>
+            <div class="schedule">
+                <#list pastAppt as ap>
+                    <div class="appointment">
+                        <div class="appointment-info">
+                            <name>
+                                ${ap.user.name}
+                                <a href="/doctor/patient/${ap.user.ID}?drID=${doctor.ID}">
+                                    <button class="editButton" style="height: 36px; float: right;">View</button>
+                                </a>
+                            </name>
+                            <br>${ap.date}<br>
+                            <div class="reason">
+                                ${ap.notes}
+                            </div>
+                        </div>
+                    </div>
+                </#list>
+            </div>
+        </div>
     </div>
 
 </body>

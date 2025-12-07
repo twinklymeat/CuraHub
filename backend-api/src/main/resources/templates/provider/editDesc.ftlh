@@ -7,12 +7,12 @@
 <body>
     <div class="signup-box">
         <form id="new-user" action="/api/doctors" method="post">
-            <input type="number" id="doctor" name="doctor" style="" value=${doctorID}>
-            <input type="number" id="user" name="user" style="" value="${userID?c}">
+            <input type="number" id="doctor" name="doctor" style="display: none;" value=${doctorID}>
+            <input type="number" id="user" name="user" style="display: none" value="${userID?c}">
             <div class="infodiv">
                 Description:
                 <br>
-                <input type="text" id="description" name="description" class="input-field" placeholder="">
+                <input type="text" id="description" name="description" class="input-field" placeholder="" value="${dr.description}">
             </div>
             <div class="infodiv">
                 <button type="submit" class="enter-button">ENTER</button>
@@ -38,9 +38,6 @@
                     <option value="other">other</option>
                 </select>
             </div> -->
-    <div class="infodiv">
-        <button class="enter-button" type="submit">Submit</button>
-    </div>
-    </form>
+    <!-- </form> -->
     </div>
 </body>
