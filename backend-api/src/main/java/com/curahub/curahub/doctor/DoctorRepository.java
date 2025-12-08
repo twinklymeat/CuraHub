@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.curahub.curahub.appointments.Appointments;
 import com.curahub.curahub.availability.Availability;
+import com.curahub.curahub.reviews.Reviews;
 
 @Repository
 public interface DoctorRepository extends JpaRepository<Doctor, Long> {
@@ -49,6 +50,9 @@ public interface DoctorRepository extends JpaRepository<Doctor, Long> {
 
     @Query(value = "SELECT d.*, u.id AS user_id, u.email, u.first_name, u.last_name, u.name, u.password, u.phone FROM doctor d JOIN base_user u ON d.doctor_user = u.id WHERE u.id = :id", nativeQuery = true)
     Doctor getBydoctorUser(@Param("id") long id);
+
+    @Query(value = "SELECT * FROM reviews WHERE doctor_id = :id", nativeQuery = true)
+    List<Reviews> getReviewsByDoctorID(long id);
 
     // I wanna kms T_T
 }

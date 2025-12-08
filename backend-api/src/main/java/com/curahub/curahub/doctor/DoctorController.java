@@ -36,6 +36,8 @@ public class DoctorController {
         model.addAttribute("availability", doctorService.getAvailabilities(id));
         model.addAttribute("appointments", doctorService.getUpcomingAppointments(id));
         model.addAttribute("pastAppt", doctorService.getPastAppointments(id));
+        model.addAttribute("reviews", doctorService.getReviewsByDoctor(id));
+        model.addAttribute("avRevs", doctorService.getAverageReviews(id));
         model.addAttribute("title", "Doctor Dashboard");
         model.addAttribute("id", id);
         return "provider/homepage";

@@ -93,6 +93,46 @@
                     </div>
                 </#list>
             </div>
+            <div style="font-size: 20px; width: fit-content;">
+                Reviews
+            </div>
+            <div style="font-size: 20px; float: right; width: fit-content;">
+                Average Reviews: ${avRevs}
+            </div>
+            <div class="schedule">
+                <#list reviews as rv>
+                    <div class="appointment">
+                        <div class="appointment-info">
+                            <name>
+                                ${rv.user.name}
+                            </name>
+                            <div style="float: right; font-size: 20px;">
+                                rating: ${rv.rating} / 5 ⭐
+                            </div><br>
+                            <div class="reason" style="font-size: 15px;">
+                                ${rv.content} <br><br>
+                                <#if rv.response??>
+                                    Response:
+                                    <div class="reason" style="font-size: 15px;">
+                                        ${rv.response}
+                                    </div>
+                                    <form action="/api/reviews/doctor/delete" method="get">
+                                        <input type="number" name="ID" id="ID" placeholder="id" style="display: none;" value=${rv.ID}>
+                                        <button type="submit" class="editButton" style="float: right;">delete /edit</button>
+                                    </form>
+                                <#else>
+                                    Response:
+                                    <form action="/api/reviews/doctor/add" enctype="form-data" method="post">
+                                        <input type="number" name="ID" id="ID" placeholder="id" style="display: none;" value=${rv.ID}> 
+                                        <input type="text" name="response" id="response" placeholder="Response" class="input-box">
+                                        <button type="submit" class="editButton" style="width: 100px; float: right;">Respond</button>
+                                    </form>
+                                </#if>
+                            </div>
+                        </div>
+                    </div>
+                </#list>
+            </div>
         </div>
     </div>
 

@@ -39,6 +39,17 @@ img {
 
 }
 
+.input-box {
+    font-size: 20px;
+    margin-left: 20px;
+    font-size: 30px;
+    width: 100%;
+    border-radius: 5px;
+    border: 2px solid #a1a1a1;
+    color:#515151;
+    margin-bottom: 10px;
+}
+
 .profilebox {
 
     background-color: #dddddd;
