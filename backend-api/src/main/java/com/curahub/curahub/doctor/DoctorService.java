@@ -1,5 +1,6 @@
 package com.curahub.curahub.doctor;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.curahub.curahub.appointments.Appointments;
+import com.curahub.curahub.reviews.Reviews;
 
 // import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -75,6 +77,15 @@ public class DoctorService {
         return newAppts;
     }
     
+    public double getAverageReviews(long id) {
+        List<Reviews> revs = getReviewsByDoctor(id);
+        long ratings = 0; 
+        for (int r = 0; r < revs.size(); r++) {
+            ratings += revs.get(r).getRating();
+        }
+        return ((double)ratings) / ((double)revs.size());
+    }
+
     public Object getDoctorByName(String name) {
         return doctorRepository.getDoctorByName(name);
     }
@@ -91,6 +102,10 @@ public class DoctorService {
     public Doctor loginAsDoctors(String email, String password) {
 
         return doctorRepository.loginAsDoctor(email, password);
+    }
+
+    public List<Reviews> getReviewsByDoctor(long id) {
+        return doctorRepository.getReviewsByDoctorID(id);
     }
 
 }
