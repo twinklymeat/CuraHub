@@ -4,7 +4,7 @@
     <link rel="stylesheet" type="text/css" href="/css/homepage.css">
 </head>
 
-<body>
+<body style="padding: 10px;">
     <div class="mainbox">
         <div class="profilebox">
             <!-- <img src="doctorpfp.png" style="float: left;"> -->
@@ -55,12 +55,21 @@
 
                 <#list appointments as ap>
                     <div class="appointment">
+                        <div style="float: right; width: min-content;">
+                            <a href="/doctor/patient/${ap.user.ID}?drID=${doctor.ID}">
+                                <button class="editButton" style="">View User</button>
+                            </a>
+                            <form action="/api/doctors/email/cancel"  method="post">
+                                <input type="text" name="to" id="to" style="display: none;" value=${ap.user.email}>
+                                <input type="text" name="subject" id="subject" style="display: none;" value="Appointment on ${ap.date} Cancelled">
+                                <input type="text" name="text" id="text" style="display: none;" value="Dr. ${ap.doctor.user.name} has decided to cancel your appointment, if you have any questions you can email them here: ${ap.doctor.user.email} or call their office at ${ap.doctor.user.phone}. Thank You, CuraHub">
+                                <input type="number" name="apID" id="apID" style="display: none;" value=${ap.ID}>
+                                <button type="submit" class="editButton" style="background-color: firebrick; margin-top: 10px;">Cancel Appt.</button>
+                            </form>
+                        </div>
                         <div class="appointment-info">
                             <name>
                                 ${ap.user.name} 
-                                <a href="/doctor/patient/${ap.user.ID}?drID=${doctor.ID}">
-                                    <button class="editButton" style="height: 36px; float: right;">View</button>
-                                </a>
                             </name>
                             <br>${ap.date}<br>
                             <div class="reason">
@@ -78,12 +87,21 @@
             <div class="schedule">
                 <#list pastAppt as ap>
                     <div class="appointment">
+                        <div style="float: right; width: min-content;">
+                            <a href="/doctor/patient/${ap.user.ID}?drID=${doctor.ID}">
+                                <button class="editButton" style="">View User</button>
+                            </a>
+                            <!-- <form action="/api/doctors/email/cancel"  method="post">
+                                <input type="text" name="to" id="to" style="display: none;" value=${ap.user.email}>
+                                <input type="text" name="subject" id="subject" style="display: none;" value="Appointment on ${ap.date} Cancelled">
+                                <input type="text" name="text" id="text" style="display: none;" value="Dr. ${ap.doctor.user.name} has decided to cancel your appointment, if you have any questions you can email them here: ${ap.doctor.user.email}. Thank You, CuraHub">
+                                <input type="number" name="apID" id="apID" style="display: none;" value=${ap.ID}>
+                                <button type="submit" class="editButton" style="background-color: firebrick; margin-top: 10px;">Cancel Appt.</button>
+                            </form> -->
+                        </div>
                         <div class="appointment-info">
                             <name>
                                 ${ap.user.name}
-                                <a href="/doctor/patient/${ap.user.ID}?drID=${doctor.ID}">
-                                    <button class="editButton" style="height: 36px; float: right;">View</button>
-                                </a>
                             </name>
                             <br>${ap.date}<br>
                             <div class="reason">
