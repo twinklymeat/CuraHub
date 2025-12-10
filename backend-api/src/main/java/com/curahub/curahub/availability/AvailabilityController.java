@@ -34,6 +34,9 @@ public class AvailabilityController {
         return ResponseEntity.ok(availabilityService.getAvailabilityByID(id));
     }
 
+    @GetMapping("/doctor/{id}")
+    public ResponseEntity<Object> getAvailabilityByDoctor(@PathVariable("id") long doctorID) {
+        return ResponseEntity.ok(availabilityService.getAvailabilityByDoctor(doctorID));
     @GetMapping("/api/availability/doctor/{id}")
     public ResponseEntity<Object> getAvailabilityByDoctor(@PathVariable long id) {
         return ResponseEntity.ok(availabilityService.getAvailabilityByDoctor(id));
