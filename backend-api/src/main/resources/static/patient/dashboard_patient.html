@@ -16,39 +16,8 @@
 
     <div class="card" style="margin:12px 0">
       <h2 style="margin-bottom:8px;font-size:1.25rem">Upcoming Appointments</h2>
-      <div class="doctor-grid">
-        <div class="card doctor-card">
-          <img class="avatar" src="https://i.pravatar.cc/400?img=44" alt="Doctor Emily C">
-          <div class="meta">
-            <h3>Dr. Emily Carter — Family Medicine</h3>
-            <div class="tags">
-              <span class="tag">Wed, Oct 8 · 10:30 AM</span>
-              <span class="tag">In-person</span>
-              <span class="tag">Room 204</span>
-            </div>
-          </div>
-          <div class="actions-right">
-            <button class="btn secondary" onclick="alert('Demo: reschedule not implemented')">Reschedule</button>
-            <button class="btn" onclick="alert('Demo: cancel not implemented')">Cancel</button>
-          </div>
-        </div>
-
-        <div class="card doctor-card">
-          <img class="avatar" src="https://i.pravatar.cc/400?img=59" alt="Doctor Noah P">
-          <div class="meta">
-            <h3>Dr. Noah Patel — Cardiology</h3>
-            <div class="tags">
-              <span class="tag">Mon, Oct 20 · 2:00 PM</span>
-              <span class="tag">Video visit</span>
-            </div>
-          </div>
-          <div class="actions-right">
-            <button class="btn secondary" onclick="alert('Demo: reschedule not implemented')">Reschedule</button>
-            <button class="btn" onclick="alert('Demo: cancel not implemented')">Cancel</button>
-          </div>
-        </div>
-      </div>
-      <small class="muted" style="display:block;margin-top:8px">Static demo data</small>
+      <div id="upcomingGrid" class="doctor-grid"></div>
+      <p id="upcomingEmpty" class="muted" style="margin-top:8px; display:none;">No upcoming appointments yet.</p>
     </div>
 
     <div class="actions" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
@@ -59,7 +28,7 @@
     </div>
   </div>
 </div>
+<script src="./assets/js/api.js"></script>
+<script src="./assets/js/dashboard.js"></script>
 </body>
 </html>
-
-
