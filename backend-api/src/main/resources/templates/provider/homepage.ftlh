@@ -5,7 +5,7 @@
 </head>
 
 <body style="padding: 10px;">
-    <div class="mainbox">
+    <div class="mainbox" >
         <div class="profilebox">
             <!-- <img src="doctorpfp.png" style="float: left;"> -->
             <div class="profile-info">
