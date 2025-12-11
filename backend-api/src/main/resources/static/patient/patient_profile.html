@@ -11,32 +11,35 @@
   <a class="btn secondary" href="./dashboard_patient.html">← Back to Dashboard</a>
   <div class="card" style="margin-top:12px">
     <h1 class="title">Your Profile</h1>
-    <p class="subtitle">Static profile form for prototype.</p>
-    <form onsubmit="event.preventDefault(); alert('Demo only');">
-      <label>Full Name</label>
-      <input value="Jane Doe">
+    <p class="subtitle">View and update your saved account details.</p>
+    <form id="profileForm">
+      <label for="profileName">Full Name</label>
+      <input id="profileName" name="fullName" autocomplete="name" placeholder="Your full name">
       <div class="row">
         <div>
-          <label>Email</label>
-          <input type="email" value="jane@example.com">
+          <label for="profileEmail">Email</label>
+          <input id="profileEmail" type="email" name="email" autocomplete="email" placeholder="name@example.com">
         </div>
         <div>
-          <label>Phone</label>
-          <input type="tel" value="(555) 555-5555">
+          <label for="profilePhone">Phone</label>
+          <input id="profilePhone" type="tel" name="phone" autocomplete="tel" placeholder="(555) 555-5555">
         </div>
       </div>
-      <label>Date of Birth</label>
-      <input type="date" value="1992-05-21">
-      <label>Primary Care Physician</label>
-      <input value="Dr. Emily Carter">
+      <label for="profileDob">Date of Birth</label>
+      <input id="profileDob" type="date" name="dob">
+      <label for="profilePcp">Primary Care Physician</label>
+      <input id="profilePcp" name="pcp" placeholder="Optional for now">
       <div class="actions" style="display:flex;gap:10px;margin-top:12px">
-        <button class="btn primary" type="submit">Save Changes</button>
+        <button id="profileSubmit" class="btn primary" type="submit">Save Changes</button>
         <a class="btn secondary" href="./dashboard_patient.html">Cancel</a>
       </div>
-      <small class="muted" style="display:block;margin-top:8px">Static demo data</small>
+      <small class="muted" style="display:block;margin-top:8px">DOB and PCP are stored locally until backend fields exist.</small>
+      <p id="profileFeedback" class="muted" style="margin-top:6px"></p>
     </form>
   </div>
 </div>
+<script src="./assets/js/api.js"></script>
+<script src="./assets/js/profile.js"></script>
 </body>
 </html>
 
