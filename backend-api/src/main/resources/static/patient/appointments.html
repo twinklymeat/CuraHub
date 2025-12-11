@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CuraHub — My Appointments</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="wrap">
+    <div class="header-row">
+      <a class="btn secondary" href="./dashboard_patient.html">← Back</a>
+      <a class="btn secondary" href="./dashboard_available_drs.html">Find Doctors</a>
+    </div>
+
+    <div class="card" style="margin-top:12px">
+      <h1 class="title">My Appointments</h1>
+      <p class="subtitle">View your past and upcoming visits and leave a review.</p>
+      <div id="apptsList" class="doctor-grid" style="margin-top:10px"></div>
+      <div id="apptsEmpty" class="muted" style="margin-top:8px; display:none;">No appointments found.</div>
+    </div>
+  </div>
+
+  <script src="./assets/js/api.js"></script>
+  <script src="./assets/js/appointments.js"></script>
+</body>
+</html>
+
