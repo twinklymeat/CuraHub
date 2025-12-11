@@ -18,4 +18,27 @@ async function fetchJSON(path, options = {}) {
   return text ? JSON.parse(text) : null;
 }
 
+// Fire-and-forget email helper; backend responds with an empty body.
+async function sendEmail({ to, subject, text }) {
+  if (!to) throw new Error('Missing recipient email');
+  const params = new URLSearchParams({ to, subject, text });
+  const url = `${API_BASE}/email/send?${params.toString()}`;
+  const res = await fetch(url, { method: 'GET' });
+  if (!res.ok) {
+    const body = await res.text().catch(() => '');
+    const error = new Error(`Email send failed: ${res.status}`);
+    error.status = res.status;
+    error.body = body;
+    throw error;
+  }
+  return true;
+}
 
+// Helper to pull cached patient info set during login/signup.
+function getCachedPatientInfo() {
+  return {
+    id: localStorage.getItem('patientUserId'),
+    email: localStorage.getItem('patientUserEmail'),
+    name: localStorage.getItem('patientUserName')
+  };
+}

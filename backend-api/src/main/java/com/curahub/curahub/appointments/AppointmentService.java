@@ -22,6 +22,10 @@ public class AppointmentService {
         return appointmentRepository.getAppointmentsById(id);
     }
 
+    public List<Appointments> getAppointmentsByUser(long userId) {
+        return appointmentRepository.getAppointmentsByUser_id(userId);
+    }
+
     public Appointments addAppointment(Appointments appointment) {
         return appointmentRepository.save(appointment);
     }

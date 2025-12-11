@@ -5,11 +5,63 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CuraHub — Available Doctors Dashboard</title>
   <link rel="stylesheet" href="../styles.css">
-  <script>
-    function applyForCare(doctorName){
-      alert('Demo: Application started for ' + doctorName);
+  <style>
+    /* Lightweight modal styling for the Apply for Care flow */
+    #applyModal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(15, 23, 42, 0.45);
+      z-index: 50;
+      padding: 16px;
     }
-  </script>
+    #applyModal .modal-card {
+      width: 100%;
+      max-width: 520px;
+      background: #ffffff;
+      color: #0f172a;
+      border-radius: 12px;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.25);
+      padding: 20px;
+      position: relative;
+    }
+    #applyModal .close-btn {
+      border: none;
+      background: transparent;
+      font-size: 1.1rem;
+      cursor: pointer;
+      color: #475569;
+    }
+    #applyModal label {
+      font-weight: 600;
+      display: block;
+      margin-top: 12px;
+      margin-bottom: 6px;
+    }
+    #applyModal textarea {
+      width: 100%;
+      min-height: 110px;
+      resize: vertical;
+      border-radius: 8px;
+      border: 1px solid #cbd5e1;
+      padding: 10px;
+      font-family: inherit;
+    }
+    #applyModal input[type="text"] {
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid #cbd5e1;
+      padding: 10px;
+    }
+    #applyModal .actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 14px;
+    }
+  </style>
   </head>
 <body>
   <div class="wrap">
@@ -130,6 +182,34 @@
       <div id="doctorList" class="doctor-grid"></div>
     </div>
   </div>
+
+  <div id="applyModal" role="dialog" aria-modal="true">
+    <div class="modal-card card">
+      <div class="header-row" style="align-items: center;">
+        <div>
+          <h2 class="title" style="margin: 0;">Apply for Care</h2>
+          <p class="subtitle" id="applyDoctorLabel" style="margin: 2px 0 0;"></p>
+        </div>
+        <button class="close-btn" id="applyClose" aria-label="Close">✕</button>
+      </div>
+      <form id="applyForm" style="margin-top: 10px;">
+        <label for="applyReason">Reason for visit</label>
+        <textarea id="applyReason" name="reason" placeholder="Briefly describe why you’re visiting" required></textarea>
+
+        <label for="applyContact">Preferred contact (optional)</label>
+        <input id="applyContact" name="contact" type="text" placeholder="e.g., Best phone/time to reach you">
+
+        <small class="muted" style="display:block;margin-top:8px">We’ll email the doctor and send you a receipt.</small>
+        <div id="applyError" class="muted" style="color:#ef4444; min-height: 18px; margin-top: 6px;"></div>
+
+        <div class="actions">
+          <button type="button" class="btn secondary" id="applyCancel">Cancel</button>
+          <button type="submit" class="btn primary" id="applySubmit">Send request</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
 <script src="./assets/js/api.js"></script>
 <script src="./assets/js/available.js"></script>
 </body>

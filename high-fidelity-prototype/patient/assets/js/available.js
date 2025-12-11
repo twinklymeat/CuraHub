@@ -2,6 +2,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const list = document.getElementById('doctorList');
   if (!list) return;
 
+  const doctorsById = new Map();
+  const modal = document.getElementById('applyModal');
+  const modalDoctorLabel = document.getElementById('applyDoctorLabel');
+  const modalForm = document.getElementById('applyForm');
+  const modalReason = document.getElementById('applyReason');
+  const modalContact = document.getElementById('applyContact');
+  const modalError = document.getElementById('applyError');
+  const modalSubmit = document.getElementById('applySubmit');
+  const modalCancel = document.getElementById('applyCancel');
+  const modalClose = document.getElementById('applyClose');
+  let selectedDoctorId = null;
+
   function doctorCardTemplate(doctor) {
     const doctorId = doctor.id ?? doctor.ID ?? 'N/A';
     const user = doctor.user ?? {};
@@ -24,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ${phone ? `<small>${phone}</small>` : ''}
           </div>
           <div class="actions-right">
-            <button class="btn primary" onclick="applyForCare('${fullName.replace(/'/g, "\\'")}')">Apply for Care</button>
+            <button class="btn primary apply-care" data-doctor-id="${doctorId}">Apply for Care</button>
             <button class="btn secondary check-availability" data-doctor-id="${doctorId}">Check Availability</button>
           </div>
         </div>
@@ -38,6 +50,13 @@ document.addEventListener('DOMContentLoaded', () => {
       list.innerHTML = '<div class="muted">No doctors available right now.</div>';
       return;
     }
+    doctorsById.clear();
+    doctors.forEach((dr) => {
+      const id = dr.id ?? dr.ID;
+      if (id !== undefined && id !== null) {
+        doctorsById.set(String(id), dr);
+      }
+    });
     list.innerHTML = doctors.map(doctorCardTemplate).join('');
   }
 
@@ -46,6 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const doctors = await fetchJSON('/doctors');
       renderDoctors(doctors);
       attachAvailabilityHandlers();
+      attachApplyHandlers();
     } catch (error) {
       console.error('Failed to load doctors', error);
       list.innerHTML = `<div class="muted">Unable to load doctors (HTTP ${error.status ?? 'Error'}).</div>`;
@@ -76,6 +96,65 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
+
+  function attachApplyHandlers() {
+    const buttons = list.querySelectorAll('.apply-care');
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        const doctorId = btn.dataset.doctorId;
+        openApplyModal(doctorId);
+      });
+    });
+  }
+
+  function openApplyModal(doctorId) {
+    const doctor = doctorsById.get(String(doctorId));
+    if (!doctor) {
+      alert('Unable to find this doctor. Please refresh and try again.');
+      return;
+    }
+    selectedDoctorId = String(doctorId);
+    const doctorUser = doctor.user ?? {};
+    const doctorName = [doctorUser.firstName, doctorUser.lastName].filter(Boolean).join(' ') || `Doctor #${doctorId}`;
+    if (modalDoctorLabel) modalDoctorLabel.textContent = `Sending request to ${doctorName}`;
+    if (modalReason) modalReason.value = '';
+    if (modalContact) modalContact.value = '';
+    if (modalError) modalError.textContent = '';
+    if (modal) {
+      modal.style.display = 'flex';
+      setTimeout(() => modalReason?.focus(), 50);
+    }
+  }
+
+  function closeApplyModal() {
+    selectedDoctorId = null;
+    setModalBusy(false);
+    if (modal) modal.style.display = 'none';
+  }
+
+  modalCancel?.addEventListener('click', closeApplyModal);
+  modalClose?.addEventListener('click', closeApplyModal);
+
+  modalForm?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (!selectedDoctorId) {
+      alert('Please select a doctor again.');
+      closeApplyModal();
+      return;
+    }
+    const reason = (modalReason?.value || '').trim();
+    const contact = (modalContact?.value || '').trim();
+    if (!reason) {
+      if (modalError) modalError.textContent = 'Please enter a reason for your visit.';
+      modalReason?.focus();
+      return;
+    }
+    if (modalError) modalError.textContent = '';
+    setModalBusy(true);
+    await handleApplyForCare(selectedDoctorId, { reason, contact });
+    setModalBusy(false);
+    closeApplyModal();
+  });
 
   function renderAvailability(container, availability) {
     if (!Array.isArray(availability) || availability.length === 0) {
@@ -141,6 +220,108 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     return String(length);
   }
+
+  async function handleApplyForCare(doctorId, details = {}) {
+    const doctor = doctorsById.get(String(doctorId));
+    if (!doctor) {
+      alert('Unable to find this doctor. Please refresh and try again.');
+      return;
+    }
+
+    const patient = getCachedPatientInfo();
+    if (!patient.id || !patient.email) {
+      alert('Please log in first so we can attach your account to the request.');
+      return;
+    }
+
+    const doctorUser = doctor.user ?? {};
+    const doctorName = [doctorUser.firstName, doctorUser.lastName].filter(Boolean).join(' ') || `Doctor #${doctorId}`;
+    const doctorEmail = doctorUser.email;
+
+    if (!doctorEmail) {
+      alert('This doctor does not have an email on file yet. Please contact support.');
+      return;
+    }
+
+    const patientName = patient.name || 'Patient';
+    const reason = (details.reason || '').trim();
+    const contact = (details.contact || '').trim();
+    const subjectForDoctor = `New appointment request from ${patientName}`;
+    const subjectForPatient = `Appointment request sent to ${doctorName}`;
+
+    const bodyForDoctor = [
+      `You have a new appointment request from ${patientName}.`,
+      `Patient email: ${patient.email}`,
+      reason ? `Reason: ${reason}` : null,
+      contact ? `Preferred contact: ${contact}` : null,
+      `Requested doctor: ${doctorName} (ID ${doctorId})`,
+      '',
+      'Please follow up in the dashboard.'
+    ].filter(Boolean).join('\n');
+
+    const bodyForPatient = [
+      `Hi ${patientName || 'there'},`,
+      `We received your request with ${doctorName}.`,
+      reason ? `Reason you provided: ${reason}` : null,
+      'We will notify you when it is confirmed.',
+      '',
+      '— CuraHub'
+    ].filter(Boolean).join('\n');
+
+    try {
+      btnSetBusy(doctorId, true);
+      await Promise.all([
+        sendEmail({ to: doctorEmail, subject: subjectForDoctor, text: bodyForDoctor }),
+        sendEmail({ to: patient.email, subject: subjectForPatient, text: bodyForPatient })
+      ]);
+      recordApplication({
+        doctorId,
+        doctorName,
+        doctorEmail,
+        patientEmail: patient.email,
+        reason,
+        contact
+      });
+      alert('Request sent! We emailed the doctor and a receipt to you.');
+    } catch (error) {
+      console.error('Failed to send emails', error);
+      alert(`Could not send email (HTTP ${error.status ?? 'Error'}). Please try again.`);
+    } finally {
+      btnSetBusy(doctorId, false);
+    }
+  }
+
+  function btnSetBusy(doctorId, busy) {
+    const btn = list.querySelector(`.apply-care[data-doctor-id="${doctorId}"]`);
+    if (!btn) return;
+    btn.disabled = busy;
+    btn.textContent = busy ? 'Sending…' : 'Apply for Care';
+  }
+
+  function setModalBusy(busy) {
+    if (modalSubmit) {
+      modalSubmit.disabled = busy;
+      modalSubmit.textContent = busy ? 'Sending…' : 'Send request';
+    }
+    if (modalCancel) modalCancel.disabled = busy;
+  }
+
+  function recordApplication(entry) {
+    try {
+      const existing = JSON.parse(localStorage.getItem('patientApplications') || '[]');
+      const now = new Date().toISOString();
+      existing.push({
+        ...entry,
+        time: now
+      });
+      localStorage.setItem('patientApplications', JSON.stringify(existing));
+    } catch (err) {
+      console.error('Failed to cache application', err);
+    }
+  }
+
+  // Expose for any legacy inline handlers.
+  window.applyForCare = (doctorId) => openApplyModal(doctorId);
 
   loadDoctors();
 });

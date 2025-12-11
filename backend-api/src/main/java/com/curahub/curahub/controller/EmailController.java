@@ -1,6 +1,6 @@
 package com.curahub.curahub.controller;
 
-import org.springframework.stereotype.Controller;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.curahub.curahub.doctor.Doctor;
 import com.curahub.curahub.service.EmailService;
 
-@Controller
+@RestController
 public class EmailController {
 
     private final EmailService emailService;
@@ -18,15 +18,15 @@ public class EmailController {
     }
 
     @GetMapping("/api/email/send")
-    public String sendEmail(String to, String subject, String text) {
+    public ResponseEntity<Void> sendEmail(String to, String subject, String text) {
         emailService.sendEmail(to, subject, text);
-        return "";
+        return ResponseEntity.ok().build();
     }
 
     @PostMapping("/api/doctors/email/cancel")
-    public String sendCancelEmail(String to, String subject, String text, long apID) {
+    public ResponseEntity<String> sendCancelEmail(String to, String subject, String text, long apID) {
         emailService.sendEmail(to, subject, text);
-        return "redirect:/api/appointments/doctor/cancel/" + apID;
+        return ResponseEntity.ok("redirect:/api/appointments/doctor/cancel/" + apID);
     }
 }
 
