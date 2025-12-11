@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CuraHub — Your Requests</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="wrap">
+    <div class="header-row">
+      <a class="btn secondary" href="./dashboard_patient.html">← Back</a>
+      <a class="btn secondary" href="./dashboard_available_drs.html">Find Doctors</a>
+    </div>
+
+    <div class="card" style="margin-top:12px">
+      <h1 class="title">Your Applications</h1>
+      <p class="subtitle">Requests you’ve submitted to doctors.</p>
+      <div id="applicationsList" class="doctor-grid" style="margin-top:10px"></div>
+      <div id="applicationsEmpty" class="muted" style="margin-top:8px; display:none;">No applications yet.</div>
+    </div>
+  </div>
+
+  <script src="./assets/js/applications.js"></script>
+</body>
+</html>
+

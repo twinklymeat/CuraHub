@@ -5,7 +5,7 @@
 </head>
 
 <body style="padding: 10px;">
-    <div class="mainbox">
+    <div class="mainbox" >
         <div class="profilebox">
             <!-- <img src="doctorpfp.png" style="float: left;"> -->
             <div class="profile-info">
@@ -48,11 +48,13 @@
             </div>
         </div>
         <div>
+            <a href="/doctor/addappt/${doctor.ID}">
+                <button class="editButton" style="float: right;">Add Appt.</button>
+            </a>
             <p style="font-size: 20px;">
                 Scheduled Appointments:
             </p>
             <div class="schedule">
-
                 <#list appointments as ap>
                     <div class="appointment">
                         <div style="float: right; width: min-content;">
@@ -89,7 +91,7 @@
                     <div class="appointment">
                         <div style="float: right; width: min-content;">
                             <a href="/doctor/patient/${ap.user.ID}?drID=${doctor.ID}">
-                                <button class="editButton" style="">View User</button>
+                                <button class="editButton">View User</button>
                             </a>
                             <!-- <form action="/api/doctors/email/cancel"  method="post">
                                 <input type="text" name="to" id="to" style="display: none;" value=${ap.user.email}>

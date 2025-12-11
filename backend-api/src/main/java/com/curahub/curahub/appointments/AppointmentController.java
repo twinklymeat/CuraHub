@@ -22,9 +22,20 @@ public class AppointmentController {
         return ResponseEntity.ok(appointmentService.getAllAppointments());
     }
 
+    @GetMapping("/user/{id}")
+    public ResponseEntity<Object> getAppointmentsByUser(@PathVariable long id) {
+        return ResponseEntity.ok(appointmentService.getAppointmentsByUser(id));
+    }
+
     @PostMapping
     public ResponseEntity<Object> addAppointment(@RequestBody Appointments appointment) {
         return ResponseEntity.ok(appointmentService.addAppointment(appointment));
+    }
+
+    @PostMapping("/doctor")
+    public Object addDrAppointment(Appointments appointment) {
+        appointmentService.addAppointment(appointment);
+        return "redirect:/doctor/dashboard/"+appointment.getDoctor().getID();
     }
 
     @GetMapping("/doctor/cancel/{id}")

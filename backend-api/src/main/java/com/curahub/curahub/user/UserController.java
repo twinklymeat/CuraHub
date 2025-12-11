@@ -18,7 +18,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping
+    @GetMapping("/api/users")
     public ResponseEntity<Object> getAllUsers() {
         return ResponseEntity.ok(userService.getAllUsers());
     }
@@ -26,6 +26,14 @@ public class UserController {
     @GetMapping("/api/users/{id}")
     public ResponseEntity<Object> getUserByID(@PathVariable long id) {
         return ResponseEntity.ok(userService.getUserByID(id));
+    }
+
+
+
+    @PostMapping(path = "/api/users")
+    public ResponseEntity<Object> addUser(@RequestBody User user) {
+        User newUser = userService.addUser(user);
+        return ResponseEntity.ok(userService.getAllUsers());
     }
 
     @PostMapping(path = "/api/users/doctors", consumes = "application/x-www-form-urlencoded")
@@ -65,6 +73,12 @@ public class UserController {
         model.addAttribute("appointments", userService.getUpcomingAppointments(id));
         model.addAttribute("pastAppts", userService.getPastAppointments(id));
         return "provider/patientProfile";
+    }
+
+    @GetMapping("/doctor/addappt/{id}")
+    public Object addAppt(Model model, @PathVariable long id) {
+        model.addAttribute("drID", id);
+        return "provider/addappt";
     }
 
 }

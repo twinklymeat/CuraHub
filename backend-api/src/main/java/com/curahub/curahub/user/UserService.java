@@ -69,4 +69,8 @@ public class UserService {
         return newAppts;
     }
 
+    public User getUserByEmail(String email) {
+        return userRepository.getUserByEmail(email);
+    }
+
 }   

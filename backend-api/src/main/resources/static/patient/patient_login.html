@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CuraHub — Patient Login</title>
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<div class="wrap">
+  <a class="btn secondary" href="../landing.html">← Back</a>
+  <div class="card">
+    <h1 class="title">Welcome back</h1>
+    <p class="subtitle">Log in to manage your appointments and health records.</p>
+    <form id="loginForm">
+      <label>Email</label>
+      <input id="loginEmail" type="email" placeholder="jane@example.com" required>
+      <label>Password</label>
+      <input id="loginPassword" type="password" placeholder="••••••••" required>
+      <div class="actions">
+        <button id="loginSubmit" class="btn primary" type="submit">Log In</button>
+        <a class="btn secondary" href="./patient_signup.html">Create an account</a>
+      </div>
+      <small>This is a prototype screen.</small>
+      <div id="loginFeedback" class="muted" style="margin-top:8px"></div>
+    </form>
+  </div>
+</div>
+<script src="./assets/js/api.js"></script>
+<script src="./assets/js/login.js"></script>
+</body>
+</html>
